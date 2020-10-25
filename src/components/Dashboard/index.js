@@ -103,6 +103,13 @@ import Deposits from './Deposits';
 import Orders from './Orders';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import LanguageIcon from '@material-ui/icons/Language';
+import firebase from '../firebase';
+import Mapone from './map1';
+import Frame from 'react-frame-component';
+import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
+import { grey } from '@material-ui/core/colors';
+import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
+import DriveEtaIcon from '@material-ui/icons/DriveEta';
 
 function Copyright() {
   return (
@@ -183,7 +190,7 @@ const useStyles = makeStyles((theme) => ({
     height: '100vh',
     overflow: 'auto',
   },
-  container: {
+  containerr: {
     paddingTop: theme.spacing(4),
     paddingBottom: theme.spacing(4),
   },
@@ -226,8 +233,8 @@ export default function Dashboard() {
           <Typography component="h1" variant="h6" color="inherit" noWrap className={classes.title}>
             UMEA ENERGI
           </Typography>
-		  <Typography>
-			  Hello, Mats
+		  <Typography component="h1" variant="h5">
+			  Hello { firebase.getCurrentUsername() }
 		  </Typography>
 		  <Divider orientation="vertical" />
           <IconButton color="inherit">
@@ -262,27 +269,156 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.container}>
-          <Grid container spacing={3}>
-            {/* Chart */}
+        <Container maxWidth="lg" className={classes.containerr}>
+
+
+        <Grid container >
+        <Grid item md={12} sm={12} container >
+				<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counting</h1>
+              </Grid>
+            <Grid item container md={11} spacing={3}>
+                <Grid item xs >
+                <Mapone />
+                </Grid>
+                <Grid item xs >
+                <Mapone />
+                </Grid>
+                <Grid item xs >
+                <Mapone />
+                </Grid>
+            </Grid>
+            <Grid container md={1} > 
+            
+                <Grid item md={12} sm={12}>
+						<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary" >
+							<DirectionsWalkIcon fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+					<Grid item md={12} sm={12}>
+					<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary">
+							<DirectionsBikeIcon style={{color: grey}} fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+					<Grid item md={12} sm={12}>
+					<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary">
+							<DriveEtaIcon style={{color: grey}} fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+                    
+            </Grid>
+        </Grid>
+        
+        <Grid container >
+
+        <Grid item md={12} sm={12} container >
+				<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counting</h1>
+              </Grid>
+            <Grid item container md={11} spacing={3}>
+                <Grid item xs >
+                <Mapone />
+                </Grid>
+                <Grid item xs >
+                <Mapone />
+                </Grid>
+                <Grid item xs >
+                <Mapone />
+                </Grid>
+            </Grid>
+            <Grid container md={1} > 
+            
+                <Grid item md={12} sm={12}>
+						<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary" >
+							<DirectionsWalkIcon fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+					<Grid item md={12} sm={12}>
+					<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary">
+							<DirectionsBikeIcon style={{color: grey}} fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+					<Grid item md={12} sm={12}>
+					<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary">
+							<DriveEtaIcon style={{color: grey}} fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+                    
+            </Grid>
+        </Grid>
+        
+
+
+
+		{/* <Grid container spacing={3} style={{backgroundColor:grey[100],borderRadius:"50px" }} >
+              <Grid item md={12} sm={12} container >
+				<h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counting</h1>
+              </Grid>
+              <Grid item md={3.5} sm={3} container  style={{marginLeft:"3%"}}>
+				<Dashboard />
+              </Grid>
+              <Grid item md={3.5} sm={3} container >
+				<Dashboard />
+              </Grid>
+              <Grid item md={3.5} sm={3} container >
+				<Dashboard />
+              </Grid>
+              <Grid item md={1.5} sm={1} container>
+					<Grid item md={12} sm={12}>
+						<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary" >
+							<DirectionsWalkIcon fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+					<Grid item md={12} sm={12}>
+					<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary">
+							<DirectionsBikeIcon style={{color: grey}} fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+					<Grid item md={12} sm={12}>
+					<IconButton color="inherit">
+						<Badge badgeContent={4} color="secondary">
+							<DriveEtaIcon style={{color: grey}} fontSize="large" />
+						</Badge>
+					    </IconButton>
+					</Grid>
+              </Grid>
+            </Grid> */}
+          {/* <Grid container spacing={3}>
+           
             <Grid item xs={12} md={8} lg={9}>
               <Paper className={fixedHeightPaper}>
-                <Chart />
+			
+					<Mapone />
+			
               </Paper>
             </Grid>
-            {/* Recent Deposits */}
+           
             <Grid item xs={12} md={4} lg={3}>
               <Paper className={fixedHeightPaper}>
                 <Deposits />
               </Paper>
             </Grid>
-            {/* Recent Orders */}
+           
             <Grid item xs={12}>
               <Paper className={classes.paper}>
                 <Orders />
               </Paper>
             </Grid>
-          </Grid>
+          </Grid> */}
           <Box pt={4}>
             <Copyright />
           </Box>
@@ -291,3 +427,7 @@ export default function Dashboard() {
     </div>
   );
 }
+
+
+
+
