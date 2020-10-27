@@ -21,3 +21,11 @@
 .iconred {
     color: #C92D18;
 }
+
+.icongreen {
+    color: #2B471C;
+}
+
+.MuiListItemIcon-root {
+    justify-content: flex-end!important;
+}

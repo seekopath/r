@@ -25,27 +25,21 @@ export const mainListItems = (
         <DesktopMacIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
-      <ListItemIcon>
-        <LockOpenIcon />
-      </ListItemIcon>
+       <img src="assets/openlock.png" width="29px" height="26px"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <VerticalSplitIcon />
       </ListItemIcon>
       <ListItemText primary="Counting" />
-      <ListItemIcon>
-        <LockOpenIcon />
-      </ListItemIcon>
+      <img src="assets/openlock.png" width="29px" height="26px"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Environment" />
-      <ListItemIcon>
-        <LockOpenIcon />
-      </ListItemIcon>
+      <img src="assets/openlock.png" width="29px" height="26px"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
@@ -76,6 +70,9 @@ export const secondaryListItems = (
         <SettingsIcon />
       </ListItemIcon>
       <ListItemText primary="Settings" />
+    </ListItem>
+    <ListItem button style={{marginTop: "100%"}}>
+      <img src="assets/logo3.png" width="183px" height="82px" />
     </ListItem>
     {/* <ListItem button>
       <ListItemIcon>
