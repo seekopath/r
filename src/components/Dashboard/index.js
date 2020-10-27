@@ -110,6 +110,7 @@ import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import { grey } from '@material-ui/core/colors';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import Barchart from './barchart';
 import './index.css';
 
 function Copyright() {
@@ -299,7 +300,7 @@ export default function Dashboard() {
                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counting
               </p>
             </Grid>
-            <Grid container style={{paddingTop: "30px",paddingBottom:"30px",paddingLeft:"30px", borderRadius:"20px", backgroundColor:"white"}}>
+            <Grid container style={{paddingTop: "30px",paddingBottom:"30px",paddingLeft:"10px", borderRadius:"20px", backgroundColor:"white"}}>
             <Grid item container md={11} spacing={3}>
               <Grid item xs>
                 <Mapone />
@@ -387,8 +388,11 @@ export default function Dashboard() {
             </Grid>
             
             </Grid>
-            <Grid item md={9} style={{marginTop:"3%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"30px", borderRadius:"20px", backgroundColor:"white"}}>
+            <Grid item md={6} style={{marginTop:"3%", marginRight:"1%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"20px", borderRadius:"20px", backgroundColor:"white"}}>
               <Chart />
+            </Grid>
+            <Grid item xs style={{marginTop:"3%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"20px", borderRadius:"20px", backgroundColor:"white"}}>
+              <Barchart />
             </Grid>
           </Grid>
           <Box pt={4} >
