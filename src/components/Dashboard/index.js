@@ -387,7 +387,7 @@ export default function Dashboard() {
             </Grid>
             
             </Grid>
-            <Grid item md={8} style={{marginTop:"3%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"30px", borderRadius:"20px", backgroundColor:"white"}}>
+            <Grid item md={9} style={{marginTop:"3%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"30px", borderRadius:"20px", backgroundColor:"white"}}>
               <Chart />
             </Grid>
           </Grid>
