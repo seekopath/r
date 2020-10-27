@@ -384,55 +384,104 @@ function Mapone(props) {
 	const [geodata, setGeodata] = useState();
 	const mapContainerRef = useRef(null);
 
-	const  onDataChange =(items)=> {
-		let tutorials = [];
-		console.log(items);
+	// const  onDataChange =(items)=> {
+	// 	let tutorials = [];
+	// 	console.log(items);
 		
-		items.forEach((item) => {
+	// 	items.forEach((item) => {
 			
-		  let key = item.key;
-		//   console.log(key);
-		  let data = item.val();
-		  console.log(data);
-		//   tutorials.push({
-		// 	  type : 'feature',
-		// 	  geometry : {
-		// 		type: "Point",
-		// 		// [d["lon"], d["lat"]]
-		// 		coordinates: [data.Location.lat, data.Location.long],
-		// 		},
-		// 	  properties :  JSON.stringify(data),
-		// 	// key: key,
-		// 	// title: data.title,
-		// 	// description: data.description,
-		// 	// published: data.published,
-		//   });
-		tutorials.push({
-			name : data.Number_of_peds,
-			lat : data.Location.lat,
-			lng : data.Location.long
-		})
-		});
-		let dataGeoJSON = GeoJSON.parse(tutorials, { Point: ["lat", "lng"] });
-		// const geo = {
-		// 	"type": "FeatureCollection",
-		// 	"features": tutorials
-		// }
-		console.info(dataGeoJSON);
-		console.info(geodata);
-		setGeodata(dataGeoJSON);
-		console.log(geodata);
-		// return dataGeoJSON;
-		createmap(dataGeoJSON);
-		// this.setState({
-		//   tutorials: tutorials,
-		// });
-	  }
+	// 	  let key = item.key;
+	// 	//   console.log(key);
+	// 	  let data = item.val();
+	// 	  console.log(data);
+	// 	//   tutorials.push({
+	// 	// 	  type : 'feature',
+	// 	// 	  geometry : {
+	// 	// 		type: "Point",
+	// 	// 		// [d["lon"], d["lat"]]
+	// 	// 		coordinates: [data.Location.lat, data.Location.long],
+	// 	// 		},
+	// 	// 	  properties :  JSON.stringify(data),
+	// 	// 	// key: key,
+	// 	// 	// title: data.title,
+	// 	// 	// description: data.description,
+	// 	// 	// published: data.published,
+	// 	//   });
+	// 	tutorials.push({
+	// 		name : data.Number_of_peds,
+	// 		lat : data.Location.lat,
+	// 		lng : data.Location.long
+	// 	})
+	// 	});
+	// 	let dataGeoJSON = GeoJSON.parse(tutorials, { Point: ["lat", "lng"] });
+	// 	// const geo = {
+	// 	// 	"type": "FeatureCollection",
+	// 	// 	"features": tutorials
+	// 	// }
+	// 	console.info(dataGeoJSON);
+	// 	console.info(geodata);
+	// 	setGeodata(dataGeoJSON);
+	// 	console.log(geodata);
+	// 	// return dataGeoJSON;
+	// 	createmap(dataGeoJSON);
+	// 	// this.setState({
+	// 	//   tutorials: tutorials,
+	// 	// });
+	//   }
 	
-	useEffect(() => {
-		firebase.getAll().on("value", onDataChange);
+	// useEffect(() => {
+	// 	firebase.getAll().on("value", onDataChange);
 
-	},[])
+	// },[])
+	const  onDataChange =(items)=> {
+        let tutorials = [];
+        console.log(items);
+
+        items.forEach((item) => {
+
+          let key = item.key;
+          console.log(key);
+          let data = item.val();
+          console.log(data);
+        //   tutorials.push({
+        //       type : 'feature',
+        //       geometry : {
+        //         type: "Point",
+        //         // [d["lon"], d["lat"]]
+        //         coordinates: [data.Location.lat, data.Location.long],
+        //         },
+        //       properties :  JSON.stringify(data),
+        //     // key: key,
+        //     // title: data.title,
+        //     // description: data.description,
+        //     // published: data.published,
+        //   });
+        tutorials.push({
+            name : data.Number_of_peds,
+            lat : data.Location.lat,
+            lng : data.Location.long
+        })
+        });
+        let dataGeoJSON = GeoJSON.parse(tutorials, { Point: ["lat", "lng"] });
+        // const geo = {
+        //     "type": "FeatureCollection",
+        //     "features": tutorials
+        // }
+        console.info(dataGeoJSON);
+        console.info(geodata);
+        setGeodata(dataGeoJSON);
+        console.log(geodata);
+        // return dataGeoJSON;
+        createmap(dataGeoJSON);
+        // this.setState({
+        //   tutorials: tutorials,
+        // });
+      }
+
+    useEffect(() => {
+        firebase.getPedestrians().on("value", onDataChange);
+
+    },[])
 
 
 	function createmap(geojsondata){

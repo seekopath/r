@@ -84,12 +84,17 @@ const firebaseConfig = {
     app.initializeApp(firebaseConfig)
     this.auth = app.auth()
     this.db = app.database()
-    this.data = this.db.ref("/Pedestrians");
+    this.data = this.db.ref();
   }
 
   getAll() {
     return this.data;
   }
+
+  getPedestrians(){
+
+    return this.data.child('/Pedestrians');
+    }
 
   login(email,password){
       return this.auth.signInWithEmailAndPassword(email,password)

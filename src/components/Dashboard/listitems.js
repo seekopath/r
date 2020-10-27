@@ -9,38 +9,61 @@ import PeopleIcon from '@material-ui/icons/People';
 import BarChartIcon from '@material-ui/icons/BarChart';
 import LayersIcon from '@material-ui/icons/Layers';
 import AssignmentIcon from '@material-ui/icons/Assignment';
+import DesktopMacIcon from '@material-ui/icons/DesktopMac';
+import VerticalSplitIcon from '@material-ui/icons/VerticalSplit';
+import PublicIcon from '@material-ui/icons/Public';
+import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
+import SettingsIcon from '@material-ui/icons/Settings';
+import LockOpenIcon from '@material-ui/icons/LockOpen';
+import LockIcon from '@material-ui/icons/Lock';
+
 
 export const mainListItems = (
   <div>
     <ListItem button>
       <ListItemIcon>
-        <DashboardIcon />
+        <DesktopMacIcon />
       </ListItemIcon>
       <ListItemText primary="Dashboard" />
+      <ListItemIcon>
+        <LockOpenIcon />
+      </ListItemIcon>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <ShoppingCartIcon />
+        <VerticalSplitIcon />
       </ListItemIcon>
       <ListItemText primary="Counting" />
-    </ListItem>
-    <ListItem button>
       <ListItemIcon>
-        <PeopleIcon />
+        <LockOpenIcon />
       </ListItemIcon>
-      <ListItemText primary="Environment" />
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
       </ListItemIcon>
-      <ListItemText primary="Connectivity" />
+      <ListItemText primary="Environment" />
+      <ListItemIcon>
+        <LockOpenIcon />
+      </ListItemIcon>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
-        <LayersIcon />
+        <PublicIcon />
+      </ListItemIcon>
+      <ListItemText primary="Connectivity" />
+      <ListItemIcon>
+        <LockIcon className="iconred" />
+      </ListItemIcon>
+    </ListItem>
+    <ListItem button>
+      <ListItemIcon>
+        <VerifiedUserIcon />
       </ListItemIcon>
       <ListItemText primary="Safety" />
+      <ListItemIcon>
+        <LockIcon className="iconred" />
+      </ListItemIcon>
     </ListItem>
   </div>
 );
@@ -50,7 +73,7 @@ export const secondaryListItems = (
     {/* <ListSubheader inset>Saved reports</ListSubheader> */}
     <ListItem button>
       <ListItemIcon>
-        <AssignmentIcon />
+        <SettingsIcon />
       </ListItemIcon>
       <ListItemText primary="Settings" />
     </ListItem>

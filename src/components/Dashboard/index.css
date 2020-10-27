@@ -1,0 +1,23 @@
+.MuiAppBar-colorPrimary {
+    color: black!important;
+    background-color: white!important;
+}
+
+.MuiBadge-colorSecondary {
+    color: white!important;
+    background-color: #FECB2E!important;
+}
+
+.MuiSvgIcon-fontSizeLarge {
+    padding: 10%;
+    background-color: #e8e9ec;
+    border-radius: 20%;
+}
+
+.iconew {
+    color: #bdbec4;
+}
+
+.iconred {
+    color: red;
+}

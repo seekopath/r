@@ -1,82 +1,3 @@
-// import React from 'react'
-// import { Typography, Paper, Avatar, Button } from '@material-ui/core'
-// import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
-// import withStyles from '@material-ui/core/styles/withStyles'
-// import firebase from '../firebase'
-// import { withRouter } from 'react-router-dom'
-
-// const styles = theme => ({
-// 	main: {
-// 		width: 'auto',
-// 		display: 'block', // Fix IE 11 issue.
-// 		marginLeft: theme.spacing.unit * 3,
-// 		marginRight: theme.spacing.unit * 3,
-// 		[theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-// 			width: 400,
-// 			marginLeft: 'auto',
-// 			marginRight: 'auto',
-// 		},
-// 	},
-// 	paper: {
-// 		marginTop: theme.spacing.unit * 8,
-// 		display: 'flex',
-// 		flexDirection: 'column',
-// 		alignItems: 'center',
-// 		padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-// 	},
-// 	avatar: {
-// 		margin: theme.spacing.unit,
-// 		backgroundColor: theme.palette.secondary.main,
-// 	},
-// 	submit: {
-// 		marginTop: theme.spacing.unit * 3,
-// 	},
-// })
-
-// function Dashboard(props) {
-// 	const { classes } = props
-
-// 	if(!firebase.getCurrentUsername()) {
-// 		// not logged in
-// 		alert('Please login first')
-// 		props.history.replace('/login')
-// 		return null
-//     }
-
-
-    
-//     return (
-// 		<main className={classes.main}>
-// 			<Paper className={classes.paper}>
-// 				<Avatar className={classes.avatar}>
-// 					<VerifiedUserOutlined />
-// 				</Avatar>
-// 				<Typography component="h1" variant="h5">
-// 					Hello { firebase.getCurrentUsername() }
-// 				</Typography>
-// 				<Button
-// 					type="submit"
-// 					fullWidth
-// 					variant="contained"
-// 					color="secondary"
-// 					onClick={logout}
-// 					className={classes.submit}>
-// 					Logout
-//           		</Button>
-// 			</Paper>
-// 		</main>
-// 	)
-
-// 	async function logout() {
-// 		await firebase.logout()
-// 		props.history.push('/')
-// 	}
-// }
-
-// export default withRouter(withStyles(styles)(Dashboard))
-
-
-
 import React from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -206,7 +127,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+export default function Counting() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -237,16 +158,6 @@ export default function Dashboard() {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            UMEA ENERGI
-          </Typography> */}
-          <img src="assets/image14.png" width="15%"  />
           <Typography
             component="h1"
             variant="h6"
@@ -254,7 +165,7 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           >
-            
+            UMEA ENERGI
           </Typography>
           <Typography component="h1" variant="h5">
             Hello,{firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
@@ -300,27 +211,16 @@ export default function Dashboard() {
               </p>
             </Grid>
             <Grid container style={{paddingTop: "30px",paddingBottom:"30px",paddingLeft:"30px", borderRadius:"20px", backgroundColor:"white"}}>
-            <Grid item container md={11} spacing={3}>
-              <Grid item xs>
-                <Mapone />
-              </Grid>
-              <Grid item xs>
-                <Mapone />
-              </Grid>
-              <Grid item xs>
-                <Mapone />
-              </Grid>
-            </Grid>
-            <Grid container md={1}>
-              <Grid item md={12} sm={12}>
-                <IconButton color="inherit">
+            <Grid item container md={9} spacing={3}>
+              <Grid item xs md={4}>
+              <IconButton color="inherit">
                   <Badge badgeContent={4} color="secondary">
                     <DirectionsWalkIcon fontSize="large" />
                   </Badge>
                 </IconButton>
               </Grid>
-              <Grid item md={12} sm={12}>
-                <IconButton color="inherit">
+              <Grid item xs md={4}>
+              <IconButton color="inherit">
                   <Badge badgeContent={4} color="secondary">
                     <DirectionsBikeIcon
                       style={{ color: grey }}
@@ -329,69 +229,23 @@ export default function Dashboard() {
                   </Badge>
                 </IconButton>
               </Grid>
-              <Grid item md={12} sm={12}>
-                <IconButton color="inherit">
+              <Grid item xs md={4}>
+              <IconButton color="inherit">
                   <Badge badgeContent={4} color="secondary">
                     <DriveEtaIcon style={{ color: grey }} fontSize="large" />
                   </Badge>
                 </IconButton>
               </Grid>
+              <Grid item xs md={12}>
+              <Mapone />
+              </Grid>
+            </Grid>
+            <Grid container md={3} >
+              
             </Grid>
             </Grid>
           </Grid>
-
-          <Grid container >
-            <Grid item md={12} sm={12} container>
-              <p style={{ fontSize: "30px" }}>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Environment
-              </p>
-            </Grid>
-
-            <Grid container style={{paddingTop: "30px",paddingBottom:"30px",paddingLeft:"30px", borderRadius:"20px", backgroundColor:"white"}}>
-            <Grid item container md={11} spacing={3}>
-              <Grid item xs>
-                <Mapone />
-              </Grid>
-              <Grid item xs>
-                <Mapone />
-              </Grid>
-              <Grid item xs>
-                <Mapone />
-              </Grid>
-            </Grid>
-            <Grid container md={1}>
-              <Grid item md={12} sm={12}>
-                <IconButton color="inherit">
-                  <Badge badgeContent={4} color="secondary">
-                    <DirectionsWalkIcon fontSize="large" />
-                  </Badge>
-                </IconButton>
-              </Grid>
-              <Grid item md={12} sm={12}>
-                <IconButton color="inherit">
-                  <Badge badgeContent={4} color="secondary">
-                    <DirectionsBikeIcon
-                      style={{ color: grey }}
-                      fontSize="large"
-                    />
-                  </Badge>
-                </IconButton>
-              </Grid>
-              <Grid item md={12} sm={12}>
-                <IconButton color="inherit">
-                  <Badge badgeContent={4} color="secondary">
-                    <DriveEtaIcon style={{ color: grey }} fontSize="large" />
-                  </Badge>
-                </IconButton>
-              </Grid>
-            </Grid>
-            
-            </Grid>
-            <Grid item md={8} style={{marginTop:"3%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"30px", borderRadius:"20px", backgroundColor:"white"}}>
-              <Chart />
-            </Grid>
-          </Grid>
-          <Box pt={4} >
+          <Box pt={4}>
             <Copyright />
           </Box>
         </Container>
@@ -399,7 +253,3 @@ export default function Dashboard() {
     </div>
   );
 }
-
-
-
-
