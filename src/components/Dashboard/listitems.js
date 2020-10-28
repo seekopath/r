@@ -16,24 +16,29 @@ import VerifiedUserIcon from '@material-ui/icons/VerifiedUser';
 import SettingsIcon from '@material-ui/icons/Settings';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import LockIcon from '@material-ui/icons/Lock';
+import {Link} from 'react-router-dom';
 
 
 export const mainListItems = (
   <div>
-    <ListItem button>
-      <ListItemIcon>
-        <DesktopMacIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
-       <img src="assets/openlock.png" width="29px" height="26px"/>
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <VerticalSplitIcon />
-      </ListItemIcon>
-      <ListItemText primary="Counting" />
-      <img src="assets/openlock.png" width="29px" height="26px"/>
-    </ListItem>
+    <Link to="/dashboard" style={{textDecoration: "none",color:"inherit"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <DesktopMacIcon />
+        </ListItemIcon>
+        <ListItemText primary="Dashboard" />
+        <img src="assets/openlock.png" width="29px" height="26px"/>
+      </ListItem>
+    </Link>
+    <Link to="/counting" style={{textDecoration: "none",color:"inherit"}}>
+      <ListItem button>
+        <ListItemIcon>
+          <VerticalSplitIcon />
+        </ListItemIcon>
+        <ListItemText primary="Counting" />
+        <img src="assets/openlock.png" width="29px" height="26px"/>
+      </ListItem>
+    </Link>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
@@ -46,18 +51,14 @@ export const mainListItems = (
         <PublicIcon />
       </ListItemIcon>
       <ListItemText primary="Connectivity" />
-      <ListItemIcon>
-        <LockIcon className="iconred" />
-      </ListItemIcon>
+      <img src="assets/closedlock.png" width="29px" height="26px"/>
     </ListItem>
     <ListItem button>
       <ListItemIcon>
         <VerifiedUserIcon />
       </ListItemIcon>
       <ListItemText primary="Safety" />
-      <ListItemIcon>
-        <LockIcon className="iconred" />
-      </ListItemIcon>
+      <img src="assets/closedlock.png" width="29px" height="26px"/>
     </ListItem>
   </div>
 );

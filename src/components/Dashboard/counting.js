@@ -233,29 +233,83 @@ export default function Counting() {
               }}
             >
               <Grid item container md={9} spacing={3}>
-                <Grid item xs md={4}>
-                  <IconButton color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                      <DirectionsWalkIcon fontSize="large" />
-                    </Badge>
-                  </IconButton>
+                <Grid container item xs md={4}>
+                  <Grid item md={4}>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="secondary">
+                            <DirectionsWalkIcon fontSize="large" />
+                        </Badge>
+                    </IconButton>
+                  </Grid>
+                  <Grid container item md={8}>
+                      <Grid item md={12}>
+                          <Typography style={{fontSize:"13px"}}>
+                              Pedestrians/hr
+                          </Typography>
+                      </Grid>
+                      <Grid container item md={12}>
+                          <Grid item md={4} style={{alignSelf:"center"}}>
+                              <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
+                                  88
+                              </Typography>
+                          </Grid>
+                          <Grid item md={8}>
+                              <img src="assets/barchart1.png" width="104spx" height="40px" />
+                          </Grid>
+                      </Grid>
+                  </Grid>
                 </Grid>
-                <Grid item xs md={4}>
-                  <IconButton color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                      <DirectionsBikeIcon
-                        style={{ color: grey }}
-                        fontSize="large"
-                      />
-                    </Badge>
-                  </IconButton>
+                <Grid container item xs md={4}>
+                  <Grid item md={4}>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="secondary">
+                            <DirectionsBikeIcon fontSize="large" />
+                        </Badge>
+                    </IconButton>
+                  </Grid>
+                  <Grid container item md={8}>
+                      <Grid item md={12}>
+                          <Typography style={{fontSize:"13px"}}>
+                              Pedestrians/hr
+                          </Typography>
+                      </Grid>
+                      <Grid container item md={12}>
+                          <Grid item md={4} style={{alignSelf:"center"}}>
+                              <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
+                                  88
+                              </Typography>
+                          </Grid>
+                          <Grid item md={8}>
+                              <img src="assets/barchart2.png" width="104spx" height="40px" />
+                          </Grid>
+                      </Grid>
+                  </Grid>
                 </Grid>
-                <Grid item xs md={4}>
-                  <IconButton color="inherit">
-                    <Badge badgeContent={4} color="secondary">
-                      <DriveEtaIcon style={{ color: grey }} fontSize="large" />
-                    </Badge>
-                  </IconButton>
+                <Grid container item xs md={4}>
+                  <Grid item md={4}>
+                    <IconButton color="inherit">
+                        <Badge badgeContent={4} color="secondary">
+                            <DriveEtaIcon fontSize="large" />
+                        </Badge>
+                    </IconButton>
+                  </Grid>
+                  <Grid container item md={8}>
+                      <Grid item md={12}>
+                          <Typography style={{fontSize:"13px"}}>
+                              Pedestrians/hr
+                          </Typography>
+                      </Grid>
+                      <Grid container item md={12}>
+                          <Grid item md={4} style={{alignSelf:"center"}}>
+                              <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
+                                  88
+                              </Typography>
+                          </Grid>
+                          <Grid item md={8}>
+                              <img src="assets/barchart3.png" width="104spx" height="40px" />
+                          </Grid>
+                      </Grid>
+                  </Grid>
                 </Grid>
                 <Grid item xs md={12}>
                   <Maptwo />
@@ -274,9 +328,7 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                    <ListItemIcon>
-                      <ReportProblemOutlinedIcon />
-                    </ListItemIcon>
+                  <img src="assets/fall.png" width="29px" height="26px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
@@ -289,9 +341,7 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                    <ListItemIcon>
-                      <ReportProblemOutlinedIcon />
-                    </ListItemIcon>
+                  <img src="assets/lying.jpeg" width="35px" height="20px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
@@ -304,9 +354,7 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}} >
-                    <ListItemIcon>
-                      <ReportProblemOutlinedIcon  />
-                    </ListItemIcon>
+                  <img src="assets/bicycle.png" width="32px" height="32px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
@@ -319,9 +367,7 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                    <ListItemIcon>
-                      <ReportProblemOutlinedIcon />
-                    </ListItemIcon>
+                  <img src="assets/fall.png" width="29px" height="26px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
@@ -334,9 +380,7 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                    <ListItemIcon>
-                      <ReportProblemOutlinedIcon />
-                    </ListItemIcon>
+                  <img src="assets/car.jpg" width="40px" height="25px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>

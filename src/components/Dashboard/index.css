@@ -20,12 +20,14 @@
 
 .iconred {
     color: #C92D18;
+    justify-content: flex-end!important;
 }
 
 .icongreen {
     color: #2B471C;
+    justify-content: flex-end!important;
 }
 
 .MuiListItemIcon-root {
-    justify-content: flex-end!important;
+    /* justify-content: flex-end!important; */
 }
