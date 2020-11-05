@@ -72,7 +72,7 @@ export const secondaryListItems = (
       </ListItemIcon>
       <ListItemText primary="Settings" />
     </ListItem>
-    <ListItem button style={{marginTop: "100%"}}>
+    <ListItem button style={{marginTop: "75%"}}>
       <img src="assets/logo3.png" width="183px" height="82px" />
     </ListItem>
     {/* <ListItem button>

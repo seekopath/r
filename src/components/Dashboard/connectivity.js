@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Counting() {
+export default function Connectivity() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -219,7 +219,7 @@ export default function Counting() {
           <Grid container>
             <Grid item md={12} sm={12} container>
               <p style={{ fontSize: "30px" }}>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counting
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Connectivity
               </p>
             </Grid>
             <Grid

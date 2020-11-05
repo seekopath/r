@@ -13,3 +13,20 @@
 	justify-content: center;
 	align-items: center;
 }
+
+.MuiBox-root-15 {
+    margin-right: 57px!important;
+}
+
+.MuiFormControlLabel-root {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    margin-left: 0px!important;
+    margin-right: 0px!important;
+    vertical-align: middle;
+	-webkit-tap-highlight-color: transparent;
+	display: flex!important;
+	flex-direction: row!important;
+	justify-content: center!important;
+}

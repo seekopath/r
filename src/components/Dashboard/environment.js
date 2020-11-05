@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Counting() {
+export default function Environment() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -219,7 +219,7 @@ export default function Counting() {
           <Grid container>
             <Grid item md={12} sm={12} container>
               <p style={{ fontSize: "30px" }}>
-                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Counting
+                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Environment
               </p>
             </Grid>
             <Grid
@@ -233,81 +233,81 @@ export default function Counting() {
                 backgroundColor: "white",
               }}
             >
-              <Grid item container md={9} spacing={3}>
+              <Grid item container md={9} spacing={3} >
                 <Grid container item xs md={4}>
                   <Grid item md={4}>
                     <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
-                            <DirectionsWalkIcon fontSize="large" />
+                                <img src="assets/pm.png" width="61px" height="39px"/>
                         </Badge>
                     </IconButton>
                   </Grid>
                   <Grid container item md={8}>
                       <Grid item md={12}>
                           <Typography style={{fontSize:"13px"}}>
-                              Pedestrians/hr
+                              PM 2.5/hr
                           </Typography>
                       </Grid>
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  88
+                                  7<span style={{fontSize:"8px"}}>ug/m3</span>
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
-                              <img src="assets/barchart1.png" width="104spx" height="40px" />
+                              <img src="assets/barchart4.png" width="104spx" height="40px" />
                           </Grid>
                       </Grid>
                   </Grid>
                 </Grid>
                 <Grid container item xs md={4}>
                   <Grid item md={4}>
-                    <IconButton color="inherit">
+                  <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
-                            <DirectionsBikeIcon fontSize="large" />
+                                <img src="assets/cotwo.png" width="44px" height="44px"/>
                         </Badge>
                     </IconButton>
                   </Grid>
                   <Grid container item md={8}>
                       <Grid item md={12}>
                           <Typography style={{fontSize:"13px"}}>
-                              Pedestrians/hr
+                              ppm/hr
                           </Typography>
                       </Grid>
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  88
+                                  377<span style={{fontSize:"8px"}}>ppm</span>
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
-                              <img src="assets/barchart2.png" width="104spx" height="40px" />
+                              <img src="assets/barchart5.png" width="104spx" height="40px" />
                           </Grid>
                       </Grid>
                   </Grid>
                 </Grid>
                 <Grid container item xs md={4}>
                   <Grid item md={4}>
-                    <IconButton color="inherit">
+                  <IconButton color="inherit">
                         <Badge badgeContent={4} color="secondary">
-                            <DriveEtaIcon fontSize="large" />
+                                <img src="assets/temp.png" width="34px" height="34px"/>
                         </Badge>
                     </IconButton>
                   </Grid>
                   <Grid container item md={8}>
                       <Grid item md={12}>
                           <Typography style={{fontSize:"13px"}}>
-                              Pedestrians/hr
+                              C/hr
                           </Typography>
                       </Grid>
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  88
+                                  3<span style={{fontSize:"8px"}}>c</span>
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
-                              <img src="assets/barchart3.png" width="104spx" height="40px" />
+                              <img src="assets/barchart6.png" width="104spx" height="40px" />
                           </Grid>
                       </Grid>
                   </Grid>
@@ -329,11 +329,11 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/fall.png" width="29px" height="26px"/>
+                  <img src="assets/cotwo.png" width="32px" height="32px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Fall Detected" />
+                      <ListItemText primary="Hi CO2 level Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -342,11 +342,11 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/lying.jpeg" width="35px" height="20px"/>
+                  <img src="assets/pm.png" width="50px" height="32px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Lying on street Detected" />
+                      <ListItemText primary="Hi PM 2.5 Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -355,11 +355,11 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}} >
-                  <img src="assets/bicycle.png" width="32px" height="32px"/>
+                  <img src="assets/cotwo.png" width="32px" height="32px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Pedestrian hit by bike Detected" />
+                      <ListItemText primary="Hi CO2 level Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -368,11 +368,11 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/fall.png" width="29px" height="26px"/>
+                  <img src="assets/cotwo.png" width="32px" height="32px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Fall Detected" />
+                      <ListItemText primary="Hi CO2 level Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -381,11 +381,37 @@ export default function Counting() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/car.jpg" width="40px" height="25px"/>
+                  <img src="assets/pm.png" width="50px" height="32px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Pedestrian hit by car Detected" />
+                      <ListItemText primary="Hi PM 2.5 Detected" />
+                    </Grid>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Location 14.31" />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid container md={12} sm={12}>
+                  <Grid item md={2} sm={2} style={{padding:"2%"}}>
+                  <img src="assets/pm.png" width="50px" height="32px"/>
+                  </Grid>
+                  <Grid item md={10} sm={10}>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Hi PM 2.5 Detected" />
+                    </Grid>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Location 14.31" />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid container md={12} sm={12}>
+                  <Grid item md={2} sm={2} style={{padding:"2%"}}>
+                  <img src="assets/cotwo.png" width="32px" height="32px"/>
+                  </Grid>
+                  <Grid item md={10} sm={10}>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Hi CO2 level Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
