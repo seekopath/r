@@ -63,6 +63,7 @@ import app from 'firebase/app'
 import 'firebase/auth'
 import 'firebase/firebase-firestore'
 import 'firebase/database'
+import 'firebase/firestore'
 
 
 const firebaseConfig = {
@@ -76,6 +77,7 @@ const firebaseConfig = {
     measurementId: "G-8Q58V0TNJ2"
   }
 
+  // const database = firebase.database();
 
   class Firebase{
 
@@ -85,7 +87,12 @@ const firebaseConfig = {
     this.auth = app.auth()
     this.db = app.database()
     this.data = this.db.ref();
+    
   }
+
+  
+
+  
 
   getAll() {
     return this.data;
@@ -127,6 +134,23 @@ const firebaseConfig = {
      }).catch(function(error){
          window.alert(error)
      })
+  }
+
+  
+
+  setting(checkedA,checkedB,checkedC,checkedD,checkedE,checkedF,checkedG,checkedH,checkedI) {
+    this.data.child('/users/' + this.getCurrentUsername()).set({
+      people_counting: checkedA,
+      bicycle_counting: checkedB,
+      car_counting: checkedC,
+      pm: checkedD,
+      cotwo: checkedE,
+      temp: checkedF,
+      fall_detection: checkedG,
+      car_detection: checkedH,
+      bike_accident: checkedI,
+    });
+    console.log("data submitted");
   }
 
 

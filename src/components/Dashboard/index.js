@@ -131,6 +131,7 @@ const drawerWidth = 240;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
+    fontFamily: 'avenirltstd-light',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -388,7 +389,7 @@ export default function Dashboard() {
             </Grid>
             
             </Grid>
-            <Grid item md={6} style={{marginTop:"3%", marginRight:"1%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"0px", borderRadius:"20px", backgroundColor:"white"}}>
+            <Grid item md={6} style={{marginTop:"3%", paddingTop: "30px",paddingBottom:"30px",paddingLeft:"0px", borderRadius:"20px", backgroundColor:"white"}}>
               <Chart />
             </Grid>
             <Grid item md={6} style={{marginTop:"3%",paddingTop: "30px",paddingBottom:"30px",paddingLeft:"0px", borderRadius:"20px", backgroundColor:"white"}}>

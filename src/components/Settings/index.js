@@ -77,7 +77,7 @@
 
 
 
-import React from 'react';
+import React,{useEffect} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -103,16 +103,18 @@ import { mainListItems, secondaryListItems } from '../Dashboard/listitems';
 // import Orders from './Orders';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import LanguageIcon from '@material-ui/icons/Language';
-import firebase from '../firebase';
+// import firebase from '../firebase';
 // import Mapone from './map1';
 // import Frame from 'react-frame-component';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
-import { grey } from '@material-ui/core/colors';
+import { grey, lightGreen } from '@material-ui/core/colors';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import firebase from '../firebase'
 // import Barchart from './barchart';
 import '../Dashboard/index.css';
-import Switch from 'react-switch'
+// import Switch from 'react-switch'
+import Switch from '@material-ui/core/Switch';
 import SettingsIcon from '@material-ui/icons/Settings';
 
 function Copyright() {
@@ -209,7 +211,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+export default function Settings() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -219,6 +221,33 @@ export default function Dashboard() {
     setOpen(false);
   };
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  const [state, setState] = React.useState({
+    checkedA: true,
+    checkedB: true,
+    checkedC: true,
+    checkedD: true,
+    checkedE: true,
+    checkedF: true,
+    checkedG: false,
+    checkedH: false,
+    checkedI: false,
+  });
+
+  
+  useEffect(() => {   
+    console.log(state.checkedA)
+    firebase.setting(state.checkedA,state.checkedB,state.checkedC,state.checkedD,state.checkedE,state.checkedF,state.checkedG,state.checkedH,state.checkedI)
+  },[state]);
+   const handleChange = async (event) => {
+    await setState({ ...state, [event.target.name]: event.target.checked });
+    // firebase.setting(state.checkedA).then(()=>{
+    //   console.log("data submitted")  
+    // }).catch((err)=>{
+    //     console.log(err)
+    // })
+    // console.log(state.checkedA)
+};
 
   return (
     <div className={classes.root}>
@@ -330,7 +359,14 @@ export default function Dashboard() {
                         <Grid container item md={11} style={{height:"fit-content"}}>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch checked /></Grid>
+                                    <Grid item  md={12}>
+                                        <Switch
+                                            checked={state.checkedA}
+                                            onChange={handleChange}
+                                            name="checkedA"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             People Counting
@@ -346,7 +382,7 @@ export default function Dashboard() {
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER CAMERA, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -357,7 +393,14 @@ export default function Dashboard() {
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch checked /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedB}
+                                            onChange={handleChange}
+                                            name="checkedB"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             Bicycle Counting
@@ -373,7 +416,7 @@ interactive map so it is possible to see the different bike flows and where and 
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER CAMERA, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -384,7 +427,14 @@ interactive map so it is possible to see the different bike flows and where and 
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch checked /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedC}
+                                            onChange={handleChange}
+                                            name="checkedC"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             Car Counting
@@ -400,7 +450,7 @@ interactive map so it is possible to see the different car flows and where and w
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER CAMERA, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -411,7 +461,14 @@ interactive map so it is possible to see the different car flows and where and w
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch checked /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedD}
+                                            onChange={handleChange}
+                                            name="checkedD"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             PM 2.5
@@ -427,7 +484,7 @@ interactive heat map so it is possible to see the ug / m3 amount thru the city.
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -438,7 +495,14 @@ interactive heat map so it is possible to see the ug / m3 amount thru the city.
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch checked /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedE}
+                                            onChange={handleChange}
+                                            name="checkedE"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             CO2
@@ -454,7 +518,7 @@ interactive heat map so it is possible to see the CO2 amount thru the city.
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -465,7 +529,14 @@ interactive heat map so it is possible to see the CO2 amount thru the city.
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch checked /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedF}
+                                            onChange={handleChange}
+                                            name="checkedF"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             Temp
@@ -481,7 +552,7 @@ interactive heat map so it is possible to see the temperature thru the city.
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -492,7 +563,14 @@ interactive heat map so it is possible to see the temperature thru the city.
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedG}
+                                            onChange={handleChange}
+                                            name="checkedG"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             Fall Detection
@@ -508,7 +586,7 @@ interactive map so it is possible to see the the frequency and the locations of 
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER CAMERA, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -519,7 +597,14 @@ interactive map so it is possible to see the the frequency and the locations of 
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedH}
+                                            onChange={handleChange}
+                                            name="checkedH"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             Car Accident
@@ -535,7 +620,7 @@ interactive map so it is possible to see the the frequency and the locations of 
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER CAMERA, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -546,7 +631,14 @@ interactive map so it is possible to see the the frequency and the locations of 
                             </Grid>
                             <Grid container md={12}  style={{height:"fit-content",marginBottom:"1%"}}>
                                 <Grid container item md={2}>
-                                    <Grid item  md={12}><Switch /></Grid>
+                                    <Grid item  md={12}>
+                                    <Switch
+                                            checked={state.checkedI}
+                                            onChange={handleChange}
+                                            name="checkedI"
+                                            inputProps={{ 'aria-label': 'secondary checkbox' }}
+                                        />
+                                    </Grid>
                                     <Grid item  md={12}>
                                         <Typography style={{fontWeight:"700"}}>
                                             Bike Accident
@@ -562,7 +654,7 @@ interactive map so it is possible to see the the frequency and the locations of 
                                 <Grid item md={2}>
                                     <Typography>
                                         <span style={{fontWeight:"700",color:"#fecb2e"}}>&nbsp;&nbsp;$1.73 </span>
-                                        <span style={{color:"#4d4f5c",fontSize:"12px"}}> &nbsp;&nbsp;PER DEVICE, MONTH</span>
+                                        <span style={{color:"#4d4f5c",fontSize:"8px"}}> &nbsp;&nbsp;PER CAMERA, MONTH</span>
                                     </Typography>
                                 </Grid>
                                 <Grid item md={1}>
@@ -586,6 +678,14 @@ interactive map so it is possible to see the the frequency and the locations of 
       </main>
     </div>
   );
+
+//   async function setting(checkedA) {
+//     try {
+//         await firebase.setting(checkedA)
+//     } catch(error) {
+//         alert(error.message)
+//     }
+// }
 }
 
 

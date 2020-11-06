@@ -39,6 +39,7 @@ export const mainListItems = (
         <img src="assets/openlock.png" width="29px" height="26px"/>
       </ListItem>
     </Link>
+    <Link to="/environment" style={{textDecoration: "none",color:"inherit"}}>
     <ListItem button>
       <ListItemIcon>
         <BarChartIcon />
@@ -46,6 +47,8 @@ export const mainListItems = (
       <ListItemText primary="Environment" />
       <img src="assets/openlock.png" width="29px" height="26px"/>
     </ListItem>
+    </Link>
+    <Link to="/connectivity" style={{textDecoration: "none",color:"inherit"}}>
     <ListItem button>
       <ListItemIcon>
         <PublicIcon />
@@ -53,6 +56,7 @@ export const mainListItems = (
       <ListItemText primary="Connectivity" />
       <img src="assets/closedlock.png" width="29px" height="26px"/>
     </ListItem>
+    </Link>
     <ListItem button>
       <ListItemIcon>
         <VerifiedUserIcon />
@@ -66,12 +70,14 @@ export const mainListItems = (
 export const secondaryListItems = (
   <div>
     {/* <ListSubheader inset>Saved reports</ListSubheader> */}
+    <Link to="/settings" style={{textDecoration: "none",color:"inherit"}}>
     <ListItem button>
       <ListItemIcon>
         <SettingsIcon />
       </ListItemIcon>
       <ListItemText primary="Settings" />
     </ListItem>
+    </Link>
     <ListItem button style={{marginTop: "75%"}}>
       <img src="assets/logo3.png" width="183px" height="82px" />
     </ListItem>

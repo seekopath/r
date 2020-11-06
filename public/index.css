@@ -1,0 +1,8 @@
+@font-face {
+    font-family: 'avenirltstd-light';
+    src: local('avenirltstd-light'), url(fonts/avenirltstd-light.otf) format('otf');
+    }
+
+#root{
+    font-family: 'avenirltstd-light' !important;
+}
