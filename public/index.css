@@ -7,10 +7,6 @@
     font-family: 'avenirltstd-light' !important;
 }
 
-.makeStyles-toolbarIcon-3{
-    display: none!important;
-}
-
-.jss63 .jss84 .jss104 .jss121 .jss137 {
+.MuiDrawer-paper button{
     display: none;
 }
