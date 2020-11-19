@@ -6,3 +6,7 @@
 #root{
     font-family: 'avenirltstd-light' !important;
 }
+
+.makeStyles-toolbarIcon-3{
+    display: none!important;
+}

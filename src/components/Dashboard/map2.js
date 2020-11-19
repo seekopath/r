@@ -56,7 +56,7 @@ function Maptwo(props) {
         var bikes ={};
         let pedsdata = [];
         let carsdata = [];
-		console.log(items);
+		// console.log(items);
         items.forEach((item)=>{
             if(item.key=='Pedestrians'){
               peds = item.val();
@@ -89,10 +89,10 @@ function Maptwo(props) {
         let pedsdataGeoJSON = GeoJSON.parse(pedsdata, { Point: ["lat", "lng"] });
         let carsdataGeoJSON = GeoJSON.parse(carsdata, { Point: ["lat", "lng"] });
 		
-		console.info(pedsdataGeoJSON);
-		console.info(geodata);
+		// console.info(pedsdataGeoJSON);
+		// console.info(geodata);
 		setGeodata(pedsdataGeoJSON);
-		console.log(geodata);
+		// console.log(geodata);
 		// return pedsdataGeoJSON;
 		createmap(pedsdataGeoJSON,carsdataGeoJSON);
 

@@ -153,7 +153,8 @@ export default function Connectivity() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
+      <AppBar 
+      elevation={0}
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
@@ -170,7 +171,7 @@ export default function Connectivity() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
+          {/* <Typography
             component="h1"
             variant="h6"
             color="inherit"
@@ -178,6 +179,16 @@ export default function Connectivity() {
             className={classes.title}
           >
             UMEA ENERGI
+          </Typography> */}
+          {/* <img src="assets/image14.png" width="15%"  /> */}
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}
+          >
+            
           </Typography>
           <Typography component="h1" variant="h5">
             Hello,{firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
@@ -240,10 +251,10 @@ export default function Connectivity() {
                 </Grid>
               </Grid>
               
-              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)"}} >
-                <Grid item md={12} sm={12}>
+              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)",height:"fit-content"}} >
+                <Grid item md={12} sm={12} style={{height:"fit-content"}}>
                   <ListItem button>
-                    <ListItemIcon>
+                    <ListItemIcon className="icone">
                       <ReportProblemOutlinedIcon />
                     </ListItemIcon>
                     <ListItemText primary="ALERTS Last 24h" />
@@ -252,11 +263,11 @@ export default function Connectivity() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/fall.png" width="29px" height="26px"/>
+                  <img src="assets/redex.png" width="29px" height="29px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Fall Detected" />
+                      <ListItemText primary="NoP" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -265,11 +276,11 @@ export default function Connectivity() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/lying.jpeg" width="35px" height="20px"/>
+                  <img src="assets/yelex.png" width="29px" height="29px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Lying on street Detected" />
+                      <ListItemText primary="Hi Load" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -278,11 +289,11 @@ export default function Connectivity() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}} >
-                  <img src="assets/bicycle.png" width="32px" height="32px"/>
+                  <img src="assets/wifi.png" width="32px" height="32px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Pedestrian hit by bike Detected" />
+                      <ListItemText primary="Alive" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -291,11 +302,11 @@ export default function Connectivity() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/fall.png" width="29px" height="26px"/>
+                  <img src="assets/wifi.png" width="29px" height="26px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Fall Detected" />
+                      <ListItemText primary="Alive" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />
@@ -304,11 +315,37 @@ export default function Connectivity() {
                 </Grid>
                 <Grid container md={12} sm={12}>
                   <Grid item md={2} sm={2} style={{padding:"2%"}}>
-                  <img src="assets/car.jpg" width="40px" height="25px"/>
+                  <img src="assets/wifi.png" width="29px" height="29px"/>
                   </Grid>
                   <Grid item md={10} sm={10}>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Pedestrian hit by car Detected" />
+                      <ListItemText primary="Alive" />
+                    </Grid>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Location 14.31" />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid container md={12} sm={12}>
+                  <Grid item md={2} sm={2} style={{padding:"2%"}}>
+                  <img src="assets/wifi.png" width="29px" height="29px"/>
+                  </Grid>
+                  <Grid item md={10} sm={10}>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Alive" />
+                    </Grid>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Location 14.31" />
+                    </Grid>
+                  </Grid>
+                </Grid>
+                <Grid container md={12} sm={12}>
+                  <Grid item md={2} sm={2} style={{padding:"2%"}}>
+                  <img src="assets/wifi.png" width="29px" height="29px"/>
+                  </Grid>
+                  <Grid item md={10} sm={10}>
+                    <Grid item md={12} sm={12}>
+                      <ListItemText primary="Alive" />
                     </Grid>
                     <Grid item md={12} sm={12}>
                       <ListItemText primary="Location 14.31" />

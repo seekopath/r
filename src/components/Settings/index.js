@@ -236,7 +236,6 @@ export default function Settings() {
 
   
   useEffect(() => {   
-    console.log(state.checkedA)
     firebase.setting(state.checkedA,state.checkedB,state.checkedC,state.checkedD,state.checkedE,state.checkedF,state.checkedG,state.checkedH,state.checkedI)
   },[state]);
    const handleChange = async (event) => {
@@ -252,7 +251,8 @@ export default function Settings() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
+      <AppBar 
+      elevation={0}
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
@@ -278,7 +278,7 @@ export default function Settings() {
           >
             UMEA ENERGI
           </Typography> */}
-          <img src="assets/image14.png" width="15%"  />
+          {/* <img src="assets/image14.png" width="15%"  /> */}
           <Typography
             component="h1"
             variant="h6"

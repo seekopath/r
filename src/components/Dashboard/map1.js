@@ -489,7 +489,7 @@ function Mapone(props) {
 			container: mapContainerRef.current,
 			// See style options here: https://docs.mapbox.com/api/maps/#styles
 			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [4.5535,11.5207],
+			center: [18.077541,59.312111],
 			zoom: 5,
 		  });
 

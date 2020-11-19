@@ -1,4 +1,4 @@
-import React from "react";
+import React,{useEffect} from "react";
 import clsx from "clsx";
 import { makeStyles } from "@material-ui/core/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
@@ -142,6 +142,30 @@ const useStyles = makeStyles((theme) => ({
 export default function Environment() {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [pm, setPm] = React.useState(true);
+  const [cotwo, setCotwo] = React.useState(true);
+  const [temp, setTemp] = React.useState(true);
+  const  onDataChange =(items)=> {
+    items.forEach(function(item) {
+        var key = item.key;
+        var settingsdata = item.val();
+        if(key=="pm"){
+            setPm(settingsdata)
+        }
+        else if(key=="cotwo"){
+            setCotwo(settingsdata)
+        }
+        else if(key=="temp"){
+            setTemp(settingsdata)
+        }
+        // console.log(key);
+        // console.log(settingsdata);
+        });
+  }
+  useEffect(() => {   
+    firebase.settingdata().on("value",onDataChange)
+  },[]);
+  
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -153,7 +177,8 @@ export default function Environment() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
+      <AppBar 
+      elevayion={0}
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
@@ -170,7 +195,7 @@ export default function Environment() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
+          {/* <Typography
             component="h1"
             variant="h6"
             color="inherit"
@@ -178,6 +203,16 @@ export default function Environment() {
             className={classes.title}
           >
             UMEA ENERGI
+          </Typography> */}
+          {/* <img src="assets/image14.png" width="15%"  /> */}
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}
+          >
+            
           </Typography>
           <Typography component="h1" variant="h5">
             Hello,{firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
@@ -251,7 +286,8 @@ export default function Environment() {
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  7<span style={{fontSize:"8px"}}>ug/m3</span>
+                              {pm ? <div>7<span style={{fontSize:"8px"}}>ug/m3</span></div> : <div>NA</div>}
+                              {/* {firebase.settingdata("pm") ?<div>NA</div> : <div>7<span style={{fontSize:"8px"}}>ug/m3</span></div>} */}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -277,7 +313,8 @@ export default function Environment() {
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  377<span style={{fontSize:"8px"}}>ppm</span>
+                              {cotwo ? <div>377<span style={{fontSize:"8px"}}>ppm</span></div> : <div>NA</div>}
+                              {/* {firebase.settingdata("cotwo") ?<div>NA</div> : <div>377<span style={{fontSize:"8px"}}>ppm</span></div>} */}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -303,7 +340,9 @@ export default function Environment() {
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  3<span style={{fontSize:"8px"}}>c</span>
+                              {temp ?<div>3<span style={{fontSize:"8px"}}>c</span></div> : <div>NA</div>}
+                              {/* {firebase.settingdata("temp") ?<div>NA</div> : <div>3<span style={{fontSize:"8px"}}>c</span></div>} */}
+                              {/* {console.log(firebase.settingdata("temp"))} */}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -317,11 +356,11 @@ export default function Environment() {
                 </Grid>
               </Grid>
               
-              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)"}} >
+              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)"}} >
                 <Grid item md={12} sm={12}>
                   <ListItem button>
-                    <ListItemIcon>
-                      <ReportProblemOutlinedIcon />
+                    <ListItemIcon className="icone">
+                      <ReportProblemOutlinedIcon  />
                     </ListItemIcon>
                     <ListItemText primary="ALERTS Last 24h" />
                   </ListItem>

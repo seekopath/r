@@ -139,7 +139,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Counting() {
+export default function Counting(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -153,7 +153,8 @@ export default function Counting() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar
+      <AppBar 
+      elevation={0}
         position="absolute"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
@@ -170,7 +171,7 @@ export default function Counting() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography
+          {/* <Typography
             component="h1"
             variant="h6"
             color="inherit"
@@ -178,6 +179,16 @@ export default function Counting() {
             className={classes.title}
           >
             UMEA ENERGI
+          </Typography> */}
+          
+          <Typography
+            component="h1"
+            variant="h6"
+            color="inherit"
+            noWrap
+            className={classes.title}
+          >
+            
           </Typography>
           <Typography component="h1" variant="h5">
             Hello,{firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
@@ -251,7 +262,7 @@ export default function Counting() {
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  88
+                                  {firebase.settingdata("people_counting") ?<div>NA</div> : <div>88</div>}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -271,13 +282,13 @@ export default function Counting() {
                   <Grid container item md={8}>
                       <Grid item md={12}>
                           <Typography style={{fontSize:"13px"}}>
-                              Pedestrians/hr
+                              Bikes/hr
                           </Typography>
                       </Grid>
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  88
+                              {firebase.settingdata("bike_accident") ?<div>NA</div> : <div>88</div>}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -297,13 +308,13 @@ export default function Counting() {
                   <Grid container item md={8}>
                       <Grid item md={12}>
                           <Typography style={{fontSize:"13px"}}>
-                              Pedestrians/hr
+                              Cars/hr
                           </Typography>
                       </Grid>
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  88
+                              {firebase.settingdata("car_detection") ?<div>NA</div> : <div>88</div>}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -317,7 +328,7 @@ export default function Counting() {
                 </Grid>
               </Grid>
               
-              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 5px 0px rgba(0,0,0,0.75)"}} >
+              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)"}} >
                 <Grid item md={12} sm={12}>
                   <ListItem button>
                     <ListItemIcon>

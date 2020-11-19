@@ -23,11 +23,16 @@ export const mainListItems = (
   <div>
     <Link to="/dashboard" style={{textDecoration: "none",color:"inherit"}}>
       <ListItem button>
+        
+      <img src="assets/image14.png" width="80%"  />
+      </ListItem>
+    </Link>
+    <Link to="/dashboard" style={{textDecoration: "none",color:"inherit"}}>
+      <ListItem button>
         <ListItemIcon>
           <DesktopMacIcon />
         </ListItemIcon>
         <ListItemText primary="Dashboard" />
-        <img src="assets/openlock.png" width="29px" height="26px"/>
       </ListItem>
     </Link>
     <Link to="/counting" style={{textDecoration: "none",color:"inherit"}}>
@@ -36,7 +41,7 @@ export const mainListItems = (
           <VerticalSplitIcon />
         </ListItemIcon>
         <ListItemText primary="Counting" />
-        <img src="assets/openlock.png" width="29px" height="26px"/>
+        
       </ListItem>
     </Link>
     <Link to="/environment" style={{textDecoration: "none",color:"inherit"}}>
@@ -45,7 +50,6 @@ export const mainListItems = (
         <BarChartIcon />
       </ListItemIcon>
       <ListItemText primary="Environment" />
-      <img src="assets/openlock.png" width="29px" height="26px"/>
     </ListItem>
     </Link>
     <Link to="/connectivity" style={{textDecoration: "none",color:"inherit"}}>
@@ -54,7 +58,6 @@ export const mainListItems = (
         <PublicIcon />
       </ListItemIcon>
       <ListItemText primary="Connectivity" />
-      <img src="assets/closedlock.png" width="29px" height="26px"/>
     </ListItem>
     </Link>
     <ListItem button>
@@ -62,7 +65,6 @@ export const mainListItems = (
         <VerifiedUserIcon />
       </ListItemIcon>
       <ListItemText primary="Safety" />
-      <img src="assets/closedlock.png" width="29px" height="26px"/>
     </ListItem>
   </div>
 );
@@ -78,20 +80,9 @@ export const secondaryListItems = (
       <ListItemText primary="Settings" />
     </ListItem>
     </Link>
-    <ListItem button style={{marginTop: "75%"}}>
-      <img src="assets/logo3.png" width="183px" height="82px" />
+    <ListItem button style={{marginTop: "65%"}}>
+      <img src="assets/logo3.png" width="182px" height="82px" />
     </ListItem>
-    {/* <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Last quarter" />
-    </ListItem>
-    <ListItem button>
-      <ListItemIcon>
-        <AssignmentIcon />
-      </ListItemIcon>
-      <ListItemText primary="Year-end sale" />
-    </ListItem> */}
+    
   </div>
 );

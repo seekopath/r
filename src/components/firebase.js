@@ -77,7 +77,6 @@ const firebaseConfig = {
     measurementId: "G-8Q58V0TNJ2"
   }
 
-  // const database = firebase.database();
 
   class Firebase{
 
@@ -136,7 +135,6 @@ const firebaseConfig = {
      })
   }
 
-  
 
   setting(checkedA,checkedB,checkedC,checkedD,checkedE,checkedF,checkedG,checkedH,checkedI) {
     this.data.child('/users/' + this.getCurrentUsername()).set({
@@ -150,7 +148,21 @@ const firebaseConfig = {
       car_detection: checkedH,
       bike_accident: checkedI,
     });
-    console.log("data submitted");
+    // console.log("data submitted");
+    // this.data.child('/users/' + this.getCurrentUsername()).once('value', snapshot=>{
+    //   snapshot.forEach(function(snapshot) {
+    //     var key = snapshot.key;
+    //     var settingsdata = snapshot.val();
+    //     // console.log(key);
+    //     // console.log(settingsdata);
+    //   });
+    // });
+    
+  }
+
+  settingdata() {
+    return this.data.child('/users/' + this.getCurrentUsername())
+    
   }
 
 

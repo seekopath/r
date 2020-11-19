@@ -31,3 +31,13 @@
 .MuiListItemIcon-root {
     /* justify-content: flex-end!important; */
 }
+
+.flexchart{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.makeStyles-toolbarIcon-3{
+    display: none!important;
+}

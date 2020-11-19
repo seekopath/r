@@ -30,3 +30,11 @@
 	flex-direction: row!important;
 	justify-content: center!important;
 }
+
+.icone {
+	justify-content: center;
+    background-color: #fecb2e;
+    border-radius: 39%;
+	padding: 3% 0;
+	margin-right: 5%;
+}
