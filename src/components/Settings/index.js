@@ -253,7 +253,7 @@ export default function Settings() {
       <CssBaseline />
       <AppBar 
       elevation={0}
-        position="absolute"
+        position="fixed"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>

@@ -7,6 +7,7 @@ import Register from '../Register'
 import Dashboard from '../Dashboard'
 import Settings from '../Settings'
 import Chart from '../Dashboard/Chart'
+import Clipped from '../Dashboard/test'
 import Counting from '../Dashboard/counting'
 import Connectivity from '../Dashboard/connectivity'
 import Environment from '../Dashboard/environment'
@@ -43,6 +44,7 @@ export default function App() {
 					<Route exact path="/environment" component={Environment} />
 					<Route exact path="/connectivity" component={Connectivity} />
 					<Route exact path="/chart" component={Chart} />
+					<Route exact path="/clipped" component={Clipped} />
 					<Route exact path="/settings" component={Settings} />
 				</Switch>
 			</Router>

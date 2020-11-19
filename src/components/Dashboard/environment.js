@@ -178,8 +178,8 @@ export default function Environment() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar 
-      elevayion={0}
-        position="absolute"
+      elevation={0}
+        position="fixed"
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>

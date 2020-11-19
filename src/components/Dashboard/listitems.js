@@ -20,7 +20,7 @@ import {Link} from 'react-router-dom';
 
 
 export const mainListItems = (
-  <div>
+  <div className="unordered-lists">
     <Link to="/dashboard" style={{textDecoration: "none",color:"inherit"}}>
       <ListItem button>
         
@@ -80,7 +80,7 @@ export const secondaryListItems = (
       <ListItemText primary="Settings" />
     </ListItem>
     </Link>
-    <ListItem button style={{marginTop: "65%"}}>
+    <ListItem button style={{marginTop: "100%"}}>
       <img src="assets/logo3.png" width="182px" height="82px" />
     </ListItem>
     

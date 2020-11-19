@@ -223,7 +223,7 @@ export default function Dashboard() {
     <div className={classes.root}>
       <CssBaseline />
       <AppBar
-        position="absolute"
+        position="fixed"
         elevation={0}
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
