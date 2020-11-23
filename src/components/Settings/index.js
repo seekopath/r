@@ -324,7 +324,7 @@ export default function Settings() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.containerr}>
+        <Container maxWidth="xl" className={classes.containerr}>
           <Grid container>
                 <Grid item md={12} sm={12} container>
                 <p style={{ fontSize: "30px" }}>

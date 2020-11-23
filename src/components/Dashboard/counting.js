@@ -226,7 +226,7 @@ export default function Counting(props) {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.containerr}>
+        <Container maxWidth="xl" className={classes.containerr}>
           <Grid container>
             <Grid item md={12} sm={12} container>
               <p style={{ fontSize: "30px" }}>
@@ -328,7 +328,7 @@ export default function Counting(props) {
                 </Grid>
               </Grid>
               
-              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)"}} >
+              <Grid container md={3} style={{marginLeft:"1%",boxShadow: "0px 0px 25px -10px rgba(0,0,0,0.75)",height:"fit-content",}} >
                 <Grid item md={12} sm={12}>
                   <ListItem button>
                     <ListItemIcon>
@@ -404,7 +404,7 @@ export default function Counting(props) {
                   </Grid>
                 </Grid>
                 <Grid item md={12} sm={12}>
-                  <Typography style={{ display: "flex",flexDirection: "row",alignSelf: "center",alignItems: "center", justifyContent: "center" }}>
+                  <Typography style={{ display: "flex",flexDirection: "row",alignSelf: "center",alignItems: "center", justifyContent: "center",marginTop:"90%" }}>
                     See All
                   </Typography>
                 </Grid>

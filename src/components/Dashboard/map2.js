@@ -36,7 +36,7 @@ const styles = theme => ({
 	},
 	map_container :{
 		position: 'relative',
-		height: '500px',
+		height: '700px',
 	width: '100%',
 	borderRadius : '30px',
 		

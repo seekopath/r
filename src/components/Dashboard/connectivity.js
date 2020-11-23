@@ -226,7 +226,7 @@ export default function Connectivity() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.containerr}>
+        <Container maxWidth="xl" className={classes.containerr}>
           <Grid container>
             <Grid item md={12} sm={12} container>
               <p style={{ fontSize: "30px" }}>
@@ -251,7 +251,7 @@ export default function Connectivity() {
                 </Grid>
               </Grid>
               
-              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)",height:"fit-content"}} >
+              <Grid container md={3} style={{marginLeft:"1%",boxShadow: "0px 0px 25px -10px rgba(0,0,0,0.75)",height:"fit-content"}} >
                 <Grid item md={12} sm={12} style={{height:"fit-content"}}>
                   <ListItem button>
                     <ListItemIcon className="icone">

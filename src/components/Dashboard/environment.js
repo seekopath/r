@@ -250,7 +250,7 @@ export default function Environment() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.containerr}>
+        <Container maxWidth="xl" className={classes.containerr}>
           <Grid container>
             <Grid item md={12} sm={12} container>
               <p style={{ fontSize: "30px" }}>
@@ -356,7 +356,7 @@ export default function Environment() {
                 </Grid>
               </Grid>
               
-              <Grid container md={3} style={{marginLeft:"2%",boxShadow: "0px 0px 3px 0px rgba(0,0,0,0.75)"}} >
+              <Grid container md={3} style={{marginLeft:"1%",boxShadow: "0px 0px 25px -10px rgba(0,0,0,0.75)"}} >
                 <Grid item md={12} sm={12}>
                   <ListItem button>
                     <ListItemIcon className="icone">
