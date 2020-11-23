@@ -118,7 +118,7 @@ function Barchart(props) {
         <h2 style={{ textAlign: "left" }}>PM 2.5</h2>
 
         <BarChart
-        width={500}
+        width={750}
         height={300}
         data={barchartdata}
         barGap ={1} 

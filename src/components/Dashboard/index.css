@@ -36,8 +36,13 @@
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    width: inherit;
 }
 
 .makeStyles-toolbarIcon-3{
     display: none!important;
+}
+
+.App h2{
+    margin-left: 10%;
 }

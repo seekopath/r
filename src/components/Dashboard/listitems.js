@@ -24,7 +24,7 @@ export const mainListItems = (
     <Link to="/dashboard" style={{textDecoration: "none",color:"inherit"}}>
       <ListItem button>
         
-      <img src="assets/image14.png" width="80%"  />
+      <img src="assets/image14.png" width="100%"  />
       </ListItem>
     </Link>
     <Link to="/dashboard" style={{textDecoration: "none",color:"inherit"}}>
@@ -80,7 +80,7 @@ export const secondaryListItems = (
       <ListItemText primary="Settings" />
     </ListItem>
     </Link>
-    <ListItem button style={{marginTop: "100%"}}>
+    <ListItem button style={{marginTop: "220%"}}>
       <img src="assets/logo3.png" width="182px" height="82px" />
     </ListItem>
     

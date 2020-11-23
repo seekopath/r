@@ -126,7 +126,7 @@ function Copyright() {
   );
 }
 
-const drawerWidth = 220;
+const drawerWidth = 250;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -293,7 +293,7 @@ export default function Dashboard() {
       </Drawer>
       <main className={classes.content}>
         <div className={classes.appBarSpacer} />
-        <Container maxWidth="lg" className={classes.containerr}>
+        <Container maxWidth="xl" className={classes.containerr}>
           <Grid container>
             <Grid item md={12} sm={12} container>
               <p style={{ fontSize: "30px" }}>
@@ -310,8 +310,8 @@ export default function Dashboard() {
                 backgroundColor: "white",
               }}
             >
-              <Grid item container md={2} style={{marginRight:"2%"}}>
-                <Grid item md={4}>
+              <Grid item container md={2} style={{}}>
+                <Grid item md={4} style={{display:"flex",justifyContent:"center"}}>
                   <img
                     src="assets/walk.png"
                     width="49px"
@@ -385,14 +385,14 @@ export default function Dashboard() {
                 </Grid>
               </Grid>
               <Grid container md={1}>
-                <Grid item md={12} sm={12}>
+                <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
                       <DirectionsWalkIcon fontSize="large" />
                     </Badge>
                   </IconButton>
                 </Grid>
-                <Grid item md={12} sm={12}>
+                <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
                       <DirectionsBikeIcon
@@ -402,7 +402,7 @@ export default function Dashboard() {
                     </Badge>
                   </IconButton>
                 </Grid>
-                <Grid item md={12} sm={12}>
+                <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
                       <DriveEtaIcon style={{ color: grey }} fontSize="large" />
@@ -437,8 +437,8 @@ export default function Dashboard() {
 
 
 
-              <Grid item container md={2} style={{marginRight:"2%"}}>
-                <Grid item md={4}>
+              <Grid item container md={2} style={{}}>
+                <Grid item md={4} style={{display:"flex",justifyContent:"center"}}>
                   <img
                     src="assets/pm.png"
                     width="47px"
@@ -514,14 +514,14 @@ export default function Dashboard() {
                 </Grid>
               </Grid>
               <Grid container md={1}>
-                <Grid item md={12} sm={12}>
+                <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
                       <DirectionsWalkIcon fontSize="large" />
                     </Badge>
                   </IconButton>
                 </Grid>
-                <Grid item md={12} sm={12}>
+                <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
                       <DirectionsBikeIcon
@@ -531,7 +531,7 @@ export default function Dashboard() {
                     </Badge>
                   </IconButton>
                 </Grid>
-                <Grid item md={12} sm={12}>
+                <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
                       <DriveEtaIcon style={{ color: grey }} fontSize="large" />
@@ -551,6 +551,7 @@ export default function Dashboard() {
                   paddingRight: "1%",
                   borderRadius: "20px",
                   backgroundColor: "white",
+                  width:"inherit",
                 }}
               >
                 <Chart />
@@ -564,6 +565,7 @@ export default function Dashboard() {
                   paddingLeft: "1%",
                   borderRadius: "20px",
                   backgroundColor: "white",
+                  width:"inherit",
                 }}
               >
                 <Barchart />
