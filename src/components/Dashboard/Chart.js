@@ -94,12 +94,13 @@ function Chart(props) {
     const startdate = new Date("10-19-2020");
     // console.log(data);
     const data = [];
-    for (let x in cars,peds) {
+    for (let x in cars,peds,bikes) {
       
      const obj = {
         date:peds[x].Date_Time_UTC,
         Pedestrians : peds[x].Number_of_peds,
-        Cars : cars[x].Number_of_cars
+        Cars : cars[x].Number_of_cars,
+        Bikes : bikes[x].Number_of_bikes
       };
       data.push(obj);
     }
@@ -136,7 +137,7 @@ function Chart(props) {
           <Tooltip />
           <Legend />
           <Line type="monotone" dataKey="Pedestrians" stroke="#8884d8" />
-          <Line type="monotone" dataKey="Cars" stroke="#82ca9d" />
+          <Line type="monotone" dataKey="Cars" stroke="#dd6e7e" />
         </LineChart> */}
 
 
@@ -144,20 +145,26 @@ function Chart(props) {
           margin={{ top: 10, right: 30, left: 20, bottom: 0 }}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#8884d8" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="#8884d8" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#8ccbea" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#8ccbea" stopOpacity={0}/>
             </linearGradient>
             <linearGradient id="colorPv" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="5%" stopColor="#82ca9d" stopOpacity={0.8}/>
-              <stop offset="95%" stopColor="#82ca9d" stopOpacity={0}/>
+              <stop offset="5%" stopColor="#dd6e7e" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#dd6e7e" stopOpacity={0}/>
+            </linearGradient>
+            <linearGradient id="colorCv" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="5%" stopColor="#49c8b0" stopOpacity={0.8}/>
+              <stop offset="95%" stopColor="#49c8b0" stopOpacity={0}/>
             </linearGradient>
           </defs>
           <XAxis dataKey="date" />
           <YAxis />
           <CartesianGrid strokeDasharray="3 3" />
           <Tooltip />
-          <Area type="monotone" dataKey="Pedestrians" stroke="#8884d8" fillOpacity={1} fill="url(#colorUv)"  dot={true}/>
-          <Area type="monotone" dataKey="Cars" stroke="#82ca9d" fillOpacity={1} fill="url(#colorPv)"  dot={true}/>
+          <Legend />
+          <Area type="monotone" dataKey="Pedestrians" stroke="#8ccbea" fillOpacity={1} fill="url(#colorUv)"  dot={true}/>
+          <Area type="monotone" dataKey="Cars" stroke="#dd6e7e" fillOpacity={1} fill="url(#colorPv)"  dot={true}/>
+          <Area type="monotone" dataKey="Bikes" stroke="#49c8b0" fillOpacity={1} fill="url(#colorCv)"  dot={true}/>
         </AreaChart>
 
 
