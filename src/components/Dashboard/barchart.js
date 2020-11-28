@@ -73,11 +73,11 @@ function Barchart(props) {
   const [barchartdata, setData] = useState([])
 
   const onDataChange = (items)=> {
-    var pms = {};
+    var level = {};
 
     items.forEach((item)=>{
       if(item.key=='AQI'){
-        pms = item.val();
+        level = item.val();
       }
       
     });
@@ -89,11 +89,12 @@ function Barchart(props) {
     // const startdate = new Date("10-19-2020");
     // console.log(data);
     const data = [];
-    for (let x in pms) {
+    for (let x in level) {
       
      const obj = {
-        date:pms[x].Date_Time_UTC,
-        level : pms[x].AQI
+        date:level[x].Date_Time_UTC,
+        previous_time_period : level[x].AQI+50,
+        pms : level[x].AQI
       };
       data.push(obj);
     }
@@ -117,7 +118,7 @@ function Barchart(props) {
         </header>
         <h2 style={{ textAlign: "left" }}>PM 2.5</h2>
 
-        <BarChart
+        <ComposedChart
         width={750}
         height={300}
         data={barchartdata}
@@ -134,9 +135,10 @@ function Barchart(props) {
         <YAxis />
         <Tooltip />
         <Legend />
-        <Bar dataKey="level" fill="#8884d8"   barSize={20} />
+        <Bar dataKey="pms" fill="#8884d8"   barSize={20} />
+        <Line name="Previous time period" type="monotone" dataKey="previous_time_period" stroke="#ff7300" />
         {/* <Bar dataKey="uv" fill="#82ca9d" /> */}
-      </BarChart>
+      </ComposedChart>
       </div>
     );
   

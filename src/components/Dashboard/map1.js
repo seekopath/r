@@ -490,7 +490,7 @@ function Mapone(props) {
 			// See style options here: https://docs.mapbox.com/api/maps/#styles
 			style: 'mapbox://styles/mapbox/streets-v11',
 			center: [18.077541,59.312111],
-			zoom: 5,
+			zoom: 8,
 		  });
 
 		//   var url = 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson';

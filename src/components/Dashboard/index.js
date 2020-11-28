@@ -105,6 +105,11 @@ import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import LanguageIcon from '@material-ui/icons/Language';
 import firebase from '../firebase';
 import Mapone from './map1';
+import Maptwo from './map2';
+import Mapthree from './map3';
+import Mapfour from './map4';
+import Mapfive from './map5';
+import Mapsix from './map6';
 import Frame from 'react-frame-component';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import { grey } from '@material-ui/core/colors';
@@ -131,7 +136,6 @@ const drawerWidth = 250;
 const useStyles = makeStyles((theme) => ({
   root: {
     display: 'flex',
-    fontFamily: 'avenirltstd-light',
   },
   toolbar: {
     paddingRight: 24, // keep right padding when drawer closed
@@ -378,10 +382,10 @@ export default function Dashboard() {
                   <Mapone />
                 </Grid>
                 <Grid item xs>
-                  <Mapone />
+                  <Maptwo />
                 </Grid>
                 <Grid item xs>
-                  <Mapone />
+                  <Mapthree />
                 </Grid>
               </Grid>
               <Grid container md={1}>
@@ -504,13 +508,13 @@ export default function Dashboard() {
 
               <Grid item container md={9} spacing={3}>
                 <Grid item xs>
-                  <Mapone />
+                  <Mapfour />
                 </Grid>
                 <Grid item xs>
-                  <Mapone />
+                  <Mapfive />
                 </Grid>
                 <Grid item xs>
-                  <Mapone />
+                  <Mapsix />
                 </Grid>
               </Grid>
               <Grid container md={1}>

@@ -45,7 +45,7 @@ const styles = theme => ({
 
 mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhZHJ1bCIsImEiOiJja2dsNDV3ZHQwMmZzMnBxbjR3MHFmamZ4In0.JYzPwo6Yaf3H1lGDJVpV9Q';
 
-function Maptwo(props) {
+function Mapthree(props) {
 	const { classes } = props
 	const [geodata, setGeodata] = useState();
 	const mapContainerRef = useRef(null);
@@ -346,5 +346,5 @@ function Maptwo(props) {
 	}
 }
 
-export default withRouter(withStyles(styles)(Maptwo))
+export default withRouter(withStyles(styles)(Mapthree))
 
