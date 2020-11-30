@@ -9,6 +9,7 @@ import Settings from '../Settings'
 import Chart from '../Dashboard/Chart'
 import Clipped from '../Dashboard/test'
 import Counting from '../Dashboard/counting'
+import Mapone from '../Dashboard/map1'
 import Connectivity from '../Dashboard/connectivity'
 import Environment from '../Dashboard/environment'
 import { MuiThemeProvider, createMuiTheme } from '@material-ui/core/styles'
@@ -44,6 +45,7 @@ export default function App() {
 					<Route exact path="/environment" component={Environment} />
 					<Route exact path="/connectivity" component={Connectivity} />
 					<Route exact path="/chart" component={Chart} />
+					<Route exact path="/mapone" component={Mapone} />
 					<Route exact path="/clipped" component={Clipped} />
 					<Route exact path="/settings" component={Settings} />
 				</Switch>

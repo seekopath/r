@@ -110,6 +110,7 @@ import Mapthree from './map3';
 import Mapfour from './map4';
 import Mapfive from './map5';
 import Mapsix from './map6';
+import Mapseven from './map7';
 import Frame from 'react-frame-component';
 import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import { grey } from '@material-ui/core/colors';
@@ -382,10 +383,10 @@ export default function Dashboard() {
                   <Mapone />
                 </Grid>
                 <Grid item xs>
-                  <Maptwo />
+                  <Mapthree />
                 </Grid>
                 <Grid item xs>
-                  <Mapthree />
+                  <Mapfour />
                 </Grid>
               </Grid>
               <Grid container md={1}>
@@ -508,13 +509,13 @@ export default function Dashboard() {
 
               <Grid item container md={9} spacing={3}>
                 <Grid item xs>
-                  <Mapfour />
-                </Grid>
-                <Grid item xs>
                   <Mapfive />
                 </Grid>
                 <Grid item xs>
                   <Mapsix />
+                </Grid>
+                <Grid item xs>
+                  <Mapseven />
                 </Grid>
               </Grid>
               <Grid container md={1}>

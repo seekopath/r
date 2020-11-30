@@ -101,6 +101,16 @@ const firebaseConfig = {
 
     return this.data.child('/Pedestrians');
     }
+    
+  getBikes(){
+
+    return this.data.child('/Bikes');
+    }
+
+  getCars(){
+
+    return this.data.child('/Cars');
+    }
 
   login(email,password){
       return this.auth.signInWithEmailAndPassword(email,password)

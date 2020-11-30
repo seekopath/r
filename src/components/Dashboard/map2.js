@@ -56,6 +56,7 @@ function Maptwo(props) {
         var bikes ={};
         let pedsdata = [];
         let carsdata = [];
+        let bikesdata = [];
 		// console.log(items);
         items.forEach((item)=>{
             if(item.key=='Pedestrians'){
@@ -69,7 +70,7 @@ function Maptwo(props) {
             }
         });
         
-        for (let x in cars,peds) {
+        for (let x in cars,peds,bikes) {
       
             const obj1 = {
                 name : peds[x].Number_of_peds,
@@ -81,20 +82,27 @@ function Maptwo(props) {
                 lat : cars[x].Location.lat,
                 lng : cars[x].Location.long
            };
+             const obj3 = {
+                name : bikes[x].Number_of_bikes,
+                lat : bikes[x].Location.lat,
+                lng : bikes[x].Location.long
+           };
              pedsdata.push(obj1);
              carsdata.push(obj2);
+             bikesdata.push(obj3);
            }
 
 		
         let pedsdataGeoJSON = GeoJSON.parse(pedsdata, { Point: ["lat", "lng"] });
         let carsdataGeoJSON = GeoJSON.parse(carsdata, { Point: ["lat", "lng"] });
+        let bikesdataGeoJSON = GeoJSON.parse(bikesdata, { Point: ["lat", "lng"] });
 		
 		// console.info(pedsdataGeoJSON);
 		// console.info(geodata);
 		setGeodata(pedsdataGeoJSON);
 		// console.log(geodata);
 		// return pedsdataGeoJSON;
-		createmap(pedsdataGeoJSON,carsdataGeoJSON);
+		createmap(pedsdataGeoJSON,carsdataGeoJSON,bikesdataGeoJSON);
 
 	  }
 	
@@ -104,7 +112,7 @@ function Maptwo(props) {
 	},[])
 
 
-	function createmap(pedsgeojsondata,carsgeojsondata){
+	function createmap(pedsgeojsondata,carsgeojsondata,bikesgeojsondata){
 		const map = new mapboxgl.Map({
 			container: mapContainerRef.current,
 			// See style options here: https://docs.mapbox.com/api/maps/#styles
@@ -119,6 +127,7 @@ function Maptwo(props) {
 		//    console.log(geojsondata);
 		  map.addSource('earthquakes', { type: 'geojson', data: pedsgeojsondata });
           map.addSource('cars', { type: 'geojson', data: carsgeojsondata });
+          map.addSource('bikes', { type: 'geojson', data: bikesgeojsondata });
 		  map.addLayer(
 			{
 			'id': 'earthquakes-heat',
@@ -238,6 +247,78 @@ function Maptwo(props) {
                 'rgb(0,0,0)',
                 1,
                 'rgb(0,0,0)'
+                ],
+                // Adjust the heatmap radius by zoom level
+                'heatmap-radius': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                0,
+                2,
+                9,
+                20
+                ],
+                // Transition from heatmap to circle layer by zoom level
+                'heatmap-opacity': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                7,
+                1,
+                9,
+                0
+                ]
+                }
+                },
+                'waterway-label'
+                );
+            map.addLayer(
+                {
+                'id': 'bikess-heat',
+                'type': 'heatmap',
+                'source': 'bikes',
+                'maxzoom': 9,
+                'paint': {
+                // Increase the heatmap weight based on frequency and property Number_of_pedsnitude
+                'heatmap-weight': [
+                'interpolate',
+                ['linear'],
+                ['get', 'name'],
+                0,
+                0,
+                6,
+                1
+                ],
+                // Increase the heatmap color weight weight by zoom level
+                // heatmap-intensity is a multiplier on top of heatmap-weight
+                'heatmap-intensity': [
+                'interpolate',
+                ['linear'],
+                ['zoom'],
+                0,
+                1,
+                9,
+                3
+                ],
+                // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+                // Begin color ramp at 0-stop with a 0-transparancy color
+                // to create a blur-like effect.
+                'heatmap-color': [
+                'interpolate',
+                ['linear'],
+                ['heatmap-density'],
+                0,
+                'rgba(255,0,0,0)',
+                0.2,
+                'rgb(255,0,0)',
+                0.4,
+                'rgb(255,0,0)',
+                0.6,
+                'rgb(255,0,0)',
+                0.8,
+                'rgb(255,0,0)',
+                1,
+                'rgb(255,0,0)'
                 ],
                 // Adjust the heatmap radius by zoom level
                 'heatmap-radius': [
