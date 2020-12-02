@@ -111,6 +111,18 @@ const firebaseConfig = {
 
     return this.data.child('/Cars');
     }
+  getAir(){
+
+    return this.data.child('/AQI');
+    }
+  getCarbon(){
+
+    return this.data.child('/C02_ppm');
+    }
+  getTemperature(){
+
+    return this.data.child('/Temperature');
+    }
 
   login(email,password){
       return this.auth.signInWithEmailAndPassword(email,password)

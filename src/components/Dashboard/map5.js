@@ -479,7 +479,7 @@ function Mapfive(props) {
       }
 
     useEffect(() => {
-        firebase.getPedestrians().on("value", onDataChange);
+        firebase.getAir().on("value", onDataChange);
     },[])
 
 
@@ -566,17 +566,17 @@ function Mapfive(props) {
 			['linear'],
 			['heatmap-density'],
 			0,
-			'rgba(33,102,172,0)',
+			'rgba(33,122,172,0)',
 			0.2,
-			'rgb(103,169,207)',
+			'rgb(103,129,207)',
 			0.4,
-			'rgb(209,229,240)',
+			'rgb(209,29,240)',
 			0.6,
-			'rgb(253,219,199)',
+			'rgb(253,229,199)',
 			0.8,
-			'rgb(239,138,98)',
+			'rgb(239,128,98)',
 			1,
-			'rgb(178,24,43)'
+			'rgb(178,242,43)'
 			],
 			// Adjust the heatmap radius by zoom level
 			'heatmap-radius': [

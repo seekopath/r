@@ -262,8 +262,8 @@ export default function Dashboard() {
             noWrap
             className={classes.title}
           ></Typography>
-          <Typography component="h1" variant="h5">
-            Hello,{firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
+          <Typography component="h1" variant="h6" style={{color:"#707070"}}>
+            Hello, {firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
           </Typography>
           <Divider orientation="vertical" />
           <IconButton color="inherit">

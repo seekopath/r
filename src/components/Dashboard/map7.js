@@ -479,7 +479,7 @@ function Mapseven(props) {
       }
 
     useEffect(() => {
-        firebase.getCars().on("value", onDataChange);
+        firebase.getTemperature().on("value", onDataChange);
     },[])
 
 
@@ -568,15 +568,15 @@ function Mapseven(props) {
 			0,
 			'rgba(33,102,172,0)',
 			0.2,
-			'rgb(103,169,207)',
+			'rgb(103,16,207)',
 			0.4,
-			'rgb(209,229,240)',
+			'rgb(209,249,240)',
 			0.6,
-			'rgb(253,219,199)',
+			'rgb(213,219,199)',
 			0.8,
-			'rgb(239,138,98)',
+			'rgb(139,138,98)',
 			1,
-			'rgb(178,24,43)'
+			'rgb(170,24,43)'
 			],
 			// Adjust the heatmap radius by zoom level
 			'heatmap-radius': [
