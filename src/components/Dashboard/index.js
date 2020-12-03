@@ -102,6 +102,7 @@ import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LanguageIcon from '@material-ui/icons/Language';
 import firebase from '../firebase';
 import Mapone from './map1';
@@ -222,6 +223,13 @@ export default function Dashboard() {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  async function logout() {
+		try {
+			await firebase.logout();
+		} catch(error) {
+			alert(error.message)
+		}
+	}
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -263,7 +271,7 @@ export default function Dashboard() {
             className={classes.title}
           ></Typography>
           <Typography component="h1" variant="h6" style={{color:"#707070"}}>
-            Hello, {firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
+            Hello&nbsp;, {firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
           </Typography>
           <Divider orientation="vertical" />
           <IconButton color="inherit">
@@ -276,6 +284,9 @@ export default function Dashboard() {
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon className="iconew" />
             </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <ExitToAppIcon className="iconew" onClick = {logout}/>
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -381,36 +392,48 @@ export default function Dashboard() {
               <Grid item container md={9} spacing={3}>
                 <Grid item xs>
                   <Mapone />
+                  <Typography style = {{textAlign:"center"}}>Label</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapthree />
+                  <Typography style = {{textAlign:"center"}}>Label</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapfour />
+                  <Typography style = {{textAlign:"center"}}>Label</Typography>
                 </Grid>
               </Grid>
               <Grid container md={1}>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
-                      <DirectionsWalkIcon fontSize="large" />
+                      <img
+                    src="assets/walk.png"
+                    width="49px"
+                    height="25px" 
+                  />
                     </Badge>
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
-                      <DirectionsBikeIcon
-                        style={{ color: grey }}
-                        fontSize="large"
-                      />
+                      <img
+                    src="assets/cycle.png"
+                    width="25px"
+                    height="25px"
+                  />
                     </Badge>
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
-                      <DriveEtaIcon style={{ color: grey }} fontSize="large" />
+                      <img
+                    src="assets/cars.png"
+                    width="33px"
+                    height="25px"
+                  />
                     </Badge>
                   </IconButton>
                 </Grid>
@@ -510,36 +533,48 @@ export default function Dashboard() {
               <Grid item container md={9} spacing={3}>
                 <Grid item xs>
                   <Mapfive />
+                  <Typography style = {{textAlign:"center"}}>Label</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapsix />
+                  <Typography style = {{textAlign:"center"}}>Label</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapseven />
+                  <Typography style = {{textAlign:"center"}}>Label</Typography>
                 </Grid>
               </Grid>
               <Grid container md={1}>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
-                      <DirectionsWalkIcon fontSize="large" />
+                      <img
+                    src="assets/pm.png"
+                    width="47px"
+                    height="25px"
+                  />
                     </Badge>
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
-                      <DirectionsBikeIcon
-                        style={{ color: grey }}
-                        fontSize="large"
-                      />
+                      <img
+                    src="assets/cotwo.png"
+                    width="25px"
+                    height="25px"
+                  />
                     </Badge>
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
                   <IconButton color="inherit">
                     <Badge badgeContent={4} color="secondary">
-                      <DriveEtaIcon style={{ color: grey }} fontSize="large" />
+                      <img
+                    src="assets/temp.png"
+                    width="25px"
+                    height="25px"
+                  />
                     </Badge>
                   </IconButton>
                 </Grid>

@@ -232,7 +232,6 @@ const styles = theme => ({
 	  },
 	  desc :{
 		  marginTop:'15px',
-		width: '360px',
 		height: '25px',
 		objectFit: 'contain',
 		opacity: '0.5',
@@ -351,8 +350,8 @@ function SignUp(props) {
               id="confirmpassword"
             />
 
-            <Grid container className={classes.bottomhead}>
-              <Grid item md={12}>
+            <Grid container className={classes.bottomhead} >
+              <Grid item md={12} style={{marginLeft:"-10px"}}>
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="I agree with terms and conditions"
@@ -377,7 +376,7 @@ function SignUp(props) {
 			  <Grid item md={12} sm={12} >
 				<Typography className={classes.desc}>
 					<Link color="none" to="/login">
-						Already have an account?Sign in.
+						Already have an account ? Sign in.
 					</Link>
 				</Typography>
 			  </Grid>
