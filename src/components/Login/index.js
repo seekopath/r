@@ -28,6 +28,8 @@ const styles = theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		justifyContent:'center',
+		marginTop:'25vh'
 	  },
 	  avatar: {
 		margin: theme.spacing(1),
@@ -40,7 +42,7 @@ const styles = theme => ({
 	  submitt: {
 		margin: theme.spacing(3, 0, 2),
 		marginRight: theme.spacing(3),
-		padding:"10px",
+		padding:"1.5rem",
 		color: "white",
 		backgroundColor: "#43425D",
 	  },
@@ -48,7 +50,7 @@ const styles = theme => ({
 		margin: theme.spacing(3, 0, 2),
 		marginLeft: theme.spacing(3),
 		color: "#43425D",
-		padding:"10px",
+		padding:"1.5rem",
 	  },
 	  logo: {
 		  width:'20%',
@@ -94,7 +96,7 @@ const styles = theme => ({
 		  textAlign : 'right'
 	  },
 	  buttons :{
-		marginTop: theme.spacing(1),
+		marginTop: theme.spacing(5),
 	  }
 });
 
