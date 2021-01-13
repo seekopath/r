@@ -119,7 +119,7 @@ function Chart(props) {
 	},[])
   
     return (
-      <div className="App" >
+      <div className="App" style={{marginTop: "5.5%"}}>
         <header>
         </header>
         <h2 style={{ textAlign: "left" }}>Statistics</h2>

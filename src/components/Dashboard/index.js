@@ -214,7 +214,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Dashboard() {
+export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const handleDrawerOpen = () => {
@@ -225,7 +225,8 @@ export default function Dashboard() {
   };
   async function logout() {
 		try {
-			await firebase.logout();
+      await firebase.logout()
+      props.history.replace('/login')
 		} catch(error) {
 			alert(error.message)
 		}
@@ -392,15 +393,15 @@ export default function Dashboard() {
               <Grid item container md={9} spacing={3}>
                 <Grid item xs>
                   <Mapone />
-                  <Typography style = {{textAlign:"center"}}>Label</Typography>
+                  <Typography style = {{textAlign:"center"}}>Pedestrians</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapthree />
-                  <Typography style = {{textAlign:"center"}}>Label</Typography>
+                  <Typography style = {{textAlign:"center"}}>Bikes</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapfour />
-                  <Typography style = {{textAlign:"center"}}>Label</Typography>
+                  <Typography style = {{textAlign:"center"}}>Cars</Typography>
                 </Grid>
               </Grid>
               <Grid container md={1}>
@@ -533,15 +534,15 @@ export default function Dashboard() {
               <Grid item container md={9} spacing={3}>
                 <Grid item xs>
                   <Mapfive />
-                  <Typography style = {{textAlign:"center"}}>Label</Typography>
+                  <Typography style = {{textAlign:"center"}}>PM 2.5</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapsix />
-                  <Typography style = {{textAlign:"center"}}>Label</Typography>
+                  <Typography style = {{textAlign:"center"}}>ppm</Typography>
                 </Grid>
                 <Grid item xs>
                   <Mapseven />
-                  <Typography style = {{textAlign:"center"}}>Label</Typography>
+                  <Typography style = {{textAlign:"center"}}>°C</Typography>
                 </Grid>
               </Grid>
               <Grid container md={1}>

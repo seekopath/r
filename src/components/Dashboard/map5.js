@@ -675,7 +675,7 @@ function Mapfive(props) {
     return (
 		// <main >
 
-			  <div className={classes.map_container} ref={mapContainerRef} />
+			  <div className={classes.map_container} ref={mapContainerRef} style={{minWidth: "139px"}}/>
              
 			// {/* <div className={classes.map_container} ref={mapContainerRef} /> */}
 			
