@@ -184,7 +184,8 @@ const styles = theme => ({
 		margin: theme.spacing(8, 4),
 		display: 'flex',
 		flexDirection: 'column',
-		alignItems: 'center',
+    alignItems: 'center',
+    marginTop:'15vh'
 	  },
 	  avatar: {
 		margin: theme.spacing(1),
@@ -199,13 +200,15 @@ const styles = theme => ({
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1),
 		color: "white",
-		backgroundColor: "#43425D",
+    backgroundColor: "#43425D",
+    padding:'1.5rem'
 	  },
 	  submit: {
 		margin: theme.spacing(3, 0, 2),
 		marginLeft: theme.spacing(1),
 		marginRight: theme.spacing(1),
-		color: "#43425D",
+    color: "#43425D",
+    padding:'2rem'
 	  },
 	  logo: {
 		  width:'20%',
@@ -232,7 +235,6 @@ const styles = theme => ({
 	  },
 	  desc :{
 		  marginTop:'15px',
-		width: '360px',
 		height: '25px',
 		objectFit: 'contain',
 		opacity: '0.5',
@@ -251,7 +253,7 @@ const styles = theme => ({
 		  textAlign : 'right'
 	  },
 	  buttons :{
-		marginTop: theme.spacing(1),
+		marginTop: theme.spacing(5),
 	  }
 });
 
@@ -351,8 +353,8 @@ function SignUp(props) {
               id="confirmpassword"
             />
 
-            <Grid container className={classes.bottomhead}>
-              <Grid item md={12}>
+            <Grid container className={classes.bottomhead} >
+              <Grid item md={12} style={{marginLeft:"-10px"}}>
                 <FormControlLabel
                   control={<Checkbox value="remember" color="primary" />}
                   label="I agree with terms and conditions"
@@ -377,7 +379,7 @@ function SignUp(props) {
 			  <Grid item md={12} sm={12} >
 				<Typography className={classes.desc}>
 					<Link color="none" to="/login">
-						Already have an account?Sign in.
+						Already have an account ? Sign in.
 					</Link>
 				</Typography>
 			  </Grid>

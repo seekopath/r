@@ -28,6 +28,8 @@ const styles = theme => ({
 		display: 'flex',
 		flexDirection: 'column',
 		alignItems: 'center',
+		justifyContent:'center',
+		marginTop:'25vh'
 	  },
 	  avatar: {
 		margin: theme.spacing(1),
@@ -39,16 +41,16 @@ const styles = theme => ({
 	  },
 	  submitt: {
 		margin: theme.spacing(3, 0, 2),
-		marginLeft: theme.spacing(1),
-		marginRight: theme.spacing(1),
+		marginRight: theme.spacing(3),
+		padding:"1.5rem",
 		color: "white",
 		backgroundColor: "#43425D",
 	  },
 	  submit: {
 		margin: theme.spacing(3, 0, 2),
-		marginLeft: theme.spacing(1),
-		marginRight: theme.spacing(1),
+		marginLeft: theme.spacing(3),
 		color: "#43425D",
+		padding:"1.5rem",
 	  },
 	  logo: {
 		  width:'20%',
@@ -94,7 +96,7 @@ const styles = theme => ({
 		  textAlign : 'right'
 	  },
 	  buttons :{
-		marginTop: theme.spacing(1),
+		marginTop: theme.spacing(5),
 	  }
 });
 
@@ -119,7 +121,8 @@ function SignIn(props) {
 
 				className={classes.allas_logo_Rityta} ></img>
 			<Typography className={classes.desc} >
-			Welcome back! Please login to your account.
+			Welcome back! 
+			<Typography className = {classes.next}>Please login to your account.</Typography>
 			</Typography>
 			<form className={classes.form} onSubmit={e => e.preventDefault() && false } style={{padding:"3%"}}>
 			  <TextField
@@ -145,14 +148,14 @@ function SignIn(props) {
 				onChange={e => setPassword(e.target.value)}
 			  />
 			  
-			<Grid container className={classes.bottomhead}>
-              <Grid item md={6}>
+			<Grid container className={classes.bottomhead} style={{justifyContent:"space-between"}} >
+              <Grid item md={6} style = {{justifyContent:"flex-start",marginLeft:"-10px"}} className="test" >
 				<FormControlLabel
 				 control={<Checkbox value="remember" color="primary" />}
 				label="Remember me"
 				/>
               </Grid>
-              <Grid item md={6} className={classes.forgot}>
+              <Grid item md={6} className={classes.forgot} >
                 <Link href="#" to='/forgotpassword' style={{textDecoration:'none'}}>
                   Forgot password
                 </Link>

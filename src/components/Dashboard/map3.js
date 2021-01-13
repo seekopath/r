@@ -372,6 +372,7 @@ const styles = theme => ({
 	map_container :{
 		position: 'relative',
 		height: '180px',
+		minWidth: '139x',
 	width: '100%',
 	borderRadius : '30px',
 		
@@ -675,7 +676,7 @@ function Mapthree(props) {
     return (
 		// <main >
 
-			  <div className={classes.map_container} ref={mapContainerRef} />
+			  <div className={classes.map_container} ref={mapContainerRef} style={{minWidth: "139px"}} />
              
 			// {/* <div className={classes.map_container} ref={mapContainerRef} /> */}
 			
