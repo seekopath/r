@@ -101,6 +101,36 @@ const firebaseConfig = {
 
     return this.data.child('/Pedestrians');
     }
+  getPeds(){
+    var data = this.data.child('/Pedestrians');
+    var dtas;
+    data.on('value', (snapshot) => {
+      snapshot.forEach(snap => {
+        dtas = snap.val();
+      })
+    });
+    return dtas;
+    }
+  getBiks(){
+    var data = this.data.child('/Bikes');
+    var dtas;
+    data.on('value', (snapshot) => {
+      snapshot.forEach(snap => {
+        dtas = snap.val();
+      })
+    });
+    return dtas;
+    }
+  getCrs(){
+    var data = this.data.child('/Cars');
+    var dtas;
+    data.on('value', (snapshot) => {
+      snapshot.forEach(snap => {
+        dtas = snap.val();
+      })
+    });
+    return dtas;
+    }
     
   getBikes(){
 

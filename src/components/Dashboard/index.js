@@ -77,7 +77,7 @@
 
 
 
-import React from 'react';
+import React,{useEffect} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
@@ -117,6 +117,7 @@ import DirectionsWalkIcon from '@material-ui/icons/DirectionsWalk';
 import { grey } from '@material-ui/core/colors';
 import DirectionsBikeIcon from '@material-ui/icons/DirectionsBike';
 import DriveEtaIcon from '@material-ui/icons/DriveEta';
+import Button from '@material-ui/core/Button';
 import Barchart from './barchart';
 import './index.css';
 
@@ -217,6 +218,9 @@ const useStyles = makeStyles((theme) => ({
 export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [pds, setPds] = React.useState(0);
+  const [bks, setBks] = React.useState(0);
+  const [crs, setCrs] = React.useState(0);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -230,11 +234,39 @@ export default function Dashboard(props) {
 		} catch(error) {
 			alert(error.message)
 		}
+  }
+  let dtas1;
+  let dtas2;
+  let dtas3;
+  useEffect(()  => {
+    pedss();
+  });
+
+
+
+  async function pedss() {
+		try {
+      let dtasss1;
+      let dtasss2;
+      let dtasss3;
+      dtas1 = firebase.getPeds();
+      dtas2 = firebase.getBiks();
+      dtas3 = firebase.getCrs();
+      dtasss1 = dtas1.Number_of_peds;
+      dtasss2 = dtas2.Number_of_bikes;
+      dtasss3 = dtas3.Number_of_cars;
+      // console.log(dtas);
+      setPds(dtasss1);
+      setBks(dtasss2);
+      setCrs(dtasss3);
+		} catch(error) {
+			alert(error.message)
+		}
 	}
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} onLoad="pedss()">
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -338,8 +370,8 @@ export default function Dashboard(props) {
                 <Grid item md={8}>
                   <Typography style={{color:"#A1A0AE"}}>Pedestrians/hr</Typography>
                 </Grid>
-                <Grid item md={4} style={{fontSize:"25px",fontWeight:"bold",display:"flex",justifyContent:"center"}}>
-                  68
+                <Grid item md={4} style={{fontSize:"25px",fontWeight:"bold",display:"flex",justifyContent:"center"}} onload="pedss()">
+                  {pds}
                 </Grid>
                 <Grid item md={8}>
                   <img
@@ -359,7 +391,7 @@ export default function Dashboard(props) {
                   <Typography style={{color:"#A1A0AE"}}>Bikes/hr</Typography>
                 </Grid>
                 <Grid item md={4} style={{fontSize:"25px",fontWeight:"bold",display:"flex",justifyContent:"center"}}>
-                  68
+                  {bks}
                 </Grid>
                 <Grid item md={8}>
                   <img
@@ -379,7 +411,7 @@ export default function Dashboard(props) {
                   <Typography style={{color:"#A1A0AE"}}>Cars/hr</Typography>
                 </Grid>
                 <Grid item md={4} style={{fontSize:"25px",fontWeight:"bold",display:"flex",justifyContent:"center"}}>
-                  68
+                  {crs}
                 </Grid>
                 <Grid item md={8}>
                   <img
