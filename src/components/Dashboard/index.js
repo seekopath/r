@@ -221,6 +221,9 @@ export default function Dashboard(props) {
   const [pds, setPds] = React.useState(0);
   const [bks, setBks] = React.useState(0);
   const [crs, setCrs] = React.useState(0);
+  const [aqi, setAqi] = React.useState(0);
+  const [cotwo, setCotwo] = React.useState(0);
+  const [temp, setTemp] = React.useState(0);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -235,34 +238,63 @@ export default function Dashboard(props) {
 			alert(error.message)
 		}
   }
-  let dtas1;
-  let dtas2;
-  let dtas3;
+
+  const  onDataChange =(items)=> {
+    var pedssss = {};
+    var carssss = {};
+    var bikessss = {};
+    var aqissss = {};
+    var cotwossss = {};
+    var tempssss = {};
+
+    items.forEach((item)=>{
+      if(item.key=='Pedestrians'){
+        pedssss = item.val();
+      }
+    })
+    items.forEach((item)=>{
+      if(item.key=='Bikes'){
+        bikessss = item.val();
+      }
+    })
+    items.forEach((item)=>{
+      if(item.key=='Cars'){
+        carssss = item.val();
+      }
+    })
+    items.forEach((item)=>{
+      if(item.key=='AQI'){
+        aqissss = item.val();
+      }
+    })
+    items.forEach((item)=>{
+      if(item.key=='C02_ppm'){
+        cotwossss = item.val();
+      }
+    })
+    items.forEach((item)=>{
+      if(item.key=='Temperature'){
+        tempssss = item.val();
+      }
+    })
+
+    for (let x in pedssss, bikessss, carssss){
+      setPds(pedssss[x].Number_of_peds)
+      setBks(bikessss[x].Number_of_bikes)
+      setCrs(carssss[x].Number_of_cars)
+      setAqi(aqissss[x].AQI)
+      setCotwo(cotwossss[x].C02_ppm)
+      setTemp(tempssss[x].Temperature)
+    }
+
+}
+
+
   useEffect(()  => {
-    pedss();
+    firebase.getAll().on("value", onDataChange);
   });
 
 
-
-  async function pedss() {
-		try {
-      let dtasss1;
-      let dtasss2;
-      let dtasss3;
-      dtas1 = firebase.getPeds();
-      dtas2 = firebase.getBiks();
-      dtas3 = firebase.getCrs();
-      dtasss1 = dtas1.Number_of_peds;
-      dtasss2 = dtas2.Number_of_bikes;
-      dtasss3 = dtas3.Number_of_cars;
-      // console.log(dtas);
-      setPds(dtasss1);
-      setBks(dtasss2);
-      setCrs(dtasss3);
-		} catch(error) {
-			alert(error.message)
-		}
-	}
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
@@ -510,7 +542,7 @@ export default function Dashboard(props) {
                   <Typography style={{color:"#A1A0AE"}}>PM2.5/hr</Typography>
                 </Grid>
                 <Grid item md={4} style={{fontSize:"9px",fontWeight:"400",display:"flex",justifyContent:"center"}}>
-                7ug/m3
+                {aqi}ug/m3
                 </Grid>
                 <Grid item md={8}>
                   <img
@@ -530,7 +562,7 @@ export default function Dashboard(props) {
                   <Typography style={{color:"#A1A0AE"}}>ppm/hr</Typography>
                 </Grid>
                 <Grid item md={4} style={{fontSize:"9px",fontWeight:"400",display:"flex",justifyContent:"center"}}>
-                ppm
+                {cotwo}ppm
                 </Grid>
                 <Grid item md={8}>
                   <img
@@ -550,7 +582,7 @@ export default function Dashboard(props) {
                   <Typography style={{color:"#A1A0AE"}}>°C/hr</Typography>
                 </Grid>
                 <Grid item md={4} style={{fontSize:"9px",fontWeight:"400",display:"flex",justifyContent:"center"}}>
-                °C
+                {temp}°C
                 </Grid>
                 <Grid item md={8}>
                   <img

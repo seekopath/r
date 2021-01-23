@@ -48,7 +48,7 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhZHJ1bCIsImEiOiJja2dsNDV3ZHQwMmZzMnBxbjR3M
 function Maptwo(props) {
 	const { classes } = props
 	const [geodata, setGeodata] = useState();
-	const mapContainerRef = useRef(null);
+	const mapContainerRef = useRef();
 
 	const  onDataChange =(items)=> {
         var peds ={};

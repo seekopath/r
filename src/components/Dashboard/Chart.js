@@ -91,13 +91,14 @@ function Chart(props) {
     console.log({cars});
     // console.log((peds['Entry-1'].Date_Time_UTC).toDate());
     var date = (moment(peds['Entry-1'].Date_Time_UTC, "DD/MM/YYYY")).toDate();
+    console.log(date);
     const startdate = new Date("10-19-2020");
     // console.log(data);
     const data = [];
     for (let x in cars,peds,bikes) {
       
      const obj = {
-        date:peds[x].Date_Time_UTC,
+        date: peds[x].Date_Time_UTC,
         Pedestrians : peds[x].Number_of_peds,
         Cars : cars[x].Number_of_cars,
         Bikes : bikes[x].Number_of_bikes
@@ -119,7 +120,7 @@ function Chart(props) {
 	},[])
   
     return (
-      <div className="App" style={{marginTop: "5.5%"}}>
+      <div className="App" >
         <header>
         </header>
         <h2 style={{ textAlign: "left" }}>Statistics</h2>
