@@ -236,17 +236,17 @@ function Maptwo(props) {
                 ['linear'],
                 ['heatmap-density'],
                 0,
-                'rgba(0,0,0,0)',
+                'rgba(10,0,0,0)',
                 0.2,
-                'rgb(0,0,0)',
+                'rgb(0,10,0)',
                 0.4,
-                'rgb(0,0,0)',
+                'rgb(0,0,10)',
                 0.6,
-                'rgb(0,0,0)',
+                'rgb(0,15,0)',
                 0.8,
-                'rgb(0,0,0)',
+                'rgb(89,0,0)',
                 1,
-                'rgb(0,0,0)'
+                'rgb(0,0,200)'
                 ],
                 // Adjust the heatmap radius by zoom level
                 'heatmap-radius': [
