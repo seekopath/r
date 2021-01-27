@@ -34,6 +34,7 @@ import DriveEtaIcon from "@material-ui/icons/DriveEta";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemIcon from "@material-ui/core/ListItemIcon";
 import ListItemText from "@material-ui/core/ListItemText";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import DesktopMacIcon from "@material-ui/icons/DesktopMac";
 import VerticalSplitIcon from "@material-ui/icons/VerticalSplit";
 import PublicIcon from "@material-ui/icons/Public";
@@ -142,20 +143,68 @@ const useStyles = makeStyles((theme) => ({
 export default function Counting(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
+  const [pds, setPds] = React.useState(0);
+  const [bks, setBks] = React.useState(0);
+  const [crs, setCrs] = React.useState(0);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  async function logout() {
+		try {
+      await firebase.logout()
+      props.history.replace('/login')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+
+  const  onDataChange =(items)=> {
+    var pedssss = {};
+    var carssss = {};
+    var bikessss = {};
+
+    items.forEach((item)=>{
+      if(item.key=='Pedestrians'){
+        pedssss = item.val();
+      }
+    })
+    items.forEach((item)=>{
+      if(item.key=='Bikes'){
+        bikessss = item.val();
+      }
+    })
+    items.forEach((item)=>{
+      if(item.key=='Cars'){
+        carssss = item.val();
+      }
+    })
+
+    for (let x in pedssss, bikessss, carssss){
+      setPds(pedssss[x].Number_of_peds)
+      setBks(bikessss[x].Number_of_bikes)
+      setCrs(carssss[x].Number_of_cars)
+   }
+
+  }
+
+
+  React.useEffect(()  => {
+    firebase.getAll().on("value", onDataChange);
+  });
+
 
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar 
-      elevation={0}
+      <AppBar
         position="fixed"
+        elevation={0}
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>
@@ -171,27 +220,16 @@ export default function Counting(props) {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            UMEA ENERGI
-          </Typography> */}
-          
+
           <Typography
             component="h1"
             variant="h6"
             color="inherit"
             noWrap
             className={classes.title}
-          >
-            
-          </Typography>
-          <Typography component="h1" variant="h5">
-            Hello,{firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
+          ></Typography>
+          <Typography component="h1" variant="h6" style={{color:"#707070",fontSize:'1rem'}}>
+            Hello&nbsp;, {firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
           </Typography>
           <Divider orientation="vertical" />
           <IconButton color="inherit">
@@ -204,6 +242,9 @@ export default function Counting(props) {
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon className="iconew" />
             </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <ExitToAppIcon className="iconew" onClick = {logout}/>
           </IconButton>
         </Toolbar>
       </AppBar>
@@ -262,7 +303,7 @@ export default function Counting(props) {
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                                  {firebase.settingdata("people_counting") ?<div>NA</div> : <div>88</div>}
+                                  {firebase.settingdata("people_counting") ?<div>{pds}</div> : <div>88</div>}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -288,7 +329,7 @@ export default function Counting(props) {
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                              {firebase.settingdata("bike_accident") ?<div>NA</div> : <div>88</div>}
+                              {firebase.settingdata("bike_accident") ?<div>{bks}</div> : <div>88</div>}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>
@@ -314,7 +355,7 @@ export default function Counting(props) {
                       <Grid container item md={12}>
                           <Grid item md={4} style={{alignSelf:"center"}}>
                               <Typography style={{fontSize:"25px", fontWeight: "700",alignItems: "center"}}>
-                              {firebase.settingdata("car_detection") ?<div>NA</div> : <div>88</div>}
+                              {firebase.settingdata("car_detection") ?<div>{crs}</div> : <div>88</div>}
                               </Typography>
                           </Grid>
                           <Grid item md={8}>

@@ -285,9 +285,9 @@ export default function Dashboard(props) {
       setAqi(aqissss[x].AQI)
       setCotwo(cotwossss[x].C02_ppm)
       setTemp(tempssss[x].Temperature)
-    }
+   }
 
-}
+  }
 
 
   useEffect(()  => {
@@ -298,7 +298,7 @@ export default function Dashboard(props) {
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
 
   return (
-    <div className={classes.root} onLoad="pedss()">
+    <div className={classes.root}>
       <CssBaseline />
       <AppBar
         position="fixed"
@@ -318,15 +318,6 @@ export default function Dashboard(props) {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            UMEA ENERGI
-          </Typography> */}
 
           <Typography
             component="h1"
@@ -541,8 +532,8 @@ export default function Dashboard(props) {
                 <Grid item md={8}>
                   <Typography style={{color:"#A1A0AE"}}>PM2.5/hr</Typography>
                 </Grid>
-                <Grid item md={4} style={{fontSize:"9px",fontWeight:"400",display:"flex",justifyContent:"center"}}>
-                {aqi}ug/m3
+                <Grid item md={4} style={{fontSize:"20px",fontWeight:"bold",display:"flex",justifyContent:"center"}}>
+                {aqi}
                 </Grid>
                 <Grid item md={8}>
                   <img
@@ -561,8 +552,8 @@ export default function Dashboard(props) {
                 <Grid item md={8}>
                   <Typography style={{color:"#A1A0AE"}}>ppm/hr</Typography>
                 </Grid>
-                <Grid item md={4} style={{fontSize:"9px",fontWeight:"400",display:"flex",justifyContent:"center"}}>
-                {cotwo}ppm
+                <Grid item md={4} style={{fontSize:"20px",fontWeight:"bold",display:"flex",justifyContent:"center"}}>
+                {cotwo}
                 </Grid>
                 <Grid item md={8}>
                   <img
@@ -581,8 +572,8 @@ export default function Dashboard(props) {
                 <Grid item md={8}>
                   <Typography style={{color:"#A1A0AE"}}>°C/hr</Typography>
                 </Grid>
-                <Grid item md={4} style={{fontSize:"9px",fontWeight:"400",display:"flex",justifyContent:"center"}}>
-                {temp}°C
+                <Grid item md={4} style={{fontSize:"20px",fontWeight:"bold",display:"flex",justifyContent:"center"}}>
+                {temp}
                 </Grid>
                 <Grid item md={8}>
                   <img

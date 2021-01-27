@@ -143,7 +143,7 @@ function Chart(props) {
 
 
 <AreaChart width={750} height={250} data={chartdata}
-          margin={{ top: 10, right: 30, left: 20, bottom: 0 }}>
+          margin={{ top: 10, right: 30, left: 20, bottom: 0 }} style={{marginTop:"5%"}}>
           <defs>
             <linearGradient id="colorUv" x1="0" y1="0" x2="0" y2="1">
               <stop offset="5%" stopColor="#8ccbea" stopOpacity={0.8}/>

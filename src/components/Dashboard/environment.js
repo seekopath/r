@@ -18,6 +18,7 @@ import Link from "@material-ui/core/Link";
 import MenuIcon from "@material-ui/icons/Menu";
 import ChevronLeftIcon from "@material-ui/icons/ChevronLeft";
 import NotificationsIcon from "@material-ui/icons/Notifications";
+import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import { mainListItems, secondaryListItems } from "./listitems";
 import Chart from "./Chart";
 import Deposits from "./Deposits";
@@ -139,7 +140,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function Environment() {
+export default function Environment(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
   const [pm, setPm] = React.useState(true);
@@ -162,6 +163,14 @@ export default function Environment() {
         // console.log(settingsdata);
         });
   }
+  async function logout() {
+		try {
+      await firebase.logout()
+      props.history.replace('/login')
+		} catch(error) {
+			alert(error.message)
+		}
+  }
   useEffect(() => {   
     firebase.settingdata().on("value",onDataChange)
   },[]);
@@ -177,9 +186,9 @@ export default function Environment() {
   return (
     <div className={classes.root}>
       <CssBaseline />
-      <AppBar 
-      elevation={0}
+      <AppBar
         position="fixed"
+        elevation={0}
         className={clsx(classes.appBar, open && classes.appBarShift)}
       >
         <Toolbar className={classes.toolbar}>
@@ -195,27 +204,16 @@ export default function Environment() {
           >
             <MenuIcon />
           </IconButton>
-          {/* <Typography
-            component="h1"
-            variant="h6"
-            color="inherit"
-            noWrap
-            className={classes.title}
-          >
-            UMEA ENERGI
-          </Typography> */}
-          {/* <img src="assets/image14.png" width="15%"  /> */}
+
           <Typography
             component="h1"
             variant="h6"
             color="inherit"
             noWrap
             className={classes.title}
-          >
-            
-          </Typography>
-          <Typography component="h1" variant="h5">
-            Hello,{firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
+          ></Typography>
+          <Typography component="h1" variant="h6" style={{color:"#707070",fontSize:'1rem'}}>
+            Hello&nbsp;, {firebase.getCurrentUsername()}&nbsp;&nbsp;&nbsp;|
           </Typography>
           <Divider orientation="vertical" />
           <IconButton color="inherit">
@@ -228,6 +226,9 @@ export default function Environment() {
             <Badge badgeContent={4} color="secondary">
               <NotificationsIcon className="iconew" />
             </Badge>
+          </IconButton>
+          <IconButton color="inherit">
+            <ExitToAppIcon className="iconew" onClick = {logout}/>
           </IconButton>
         </Toolbar>
       </AppBar>
