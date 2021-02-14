@@ -81,7 +81,7 @@ const firebaseConfig = {
     }
   getCarbon(){
 
-    return this.data.child('/C02_ppm');
+    return this.data.child('/CO2_ppm');
     }
   getTemperature(){
 

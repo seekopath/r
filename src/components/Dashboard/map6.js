@@ -458,8 +458,8 @@ function Mapsix(props) {
         //   });
         tutorials.push({
             name : data.Number_of_peds,
-            lat : data.Location.lat,
-            lng : data.Location.long
+            lat : data.Misc.Location.lat,
+            lng : data.Misc.Location.long
         })
         });
         let dataGeoJSON = GeoJSON.parse(tutorials, { Point: ["lat", "lng"] });
@@ -488,7 +488,7 @@ function Mapsix(props) {
 			container: mapContainerRef.current,
 			// See style options here: https://docs.mapbox.com/api/maps/#styles
 			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [18.077541,59.312111],
+			center: [0.756395,58.586635],
 			zoom: 8,
 		  });
 

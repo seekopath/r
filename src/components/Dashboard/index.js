@@ -268,7 +268,7 @@ export default function Dashboard(props) {
       }
     })
     items.forEach((item)=>{
-      if(item.key=='C02_ppm'){
+      if(item.key=='CO2_ppm'){
         cotwossss = item.val();
       }
     })
@@ -283,7 +283,7 @@ export default function Dashboard(props) {
       setBks(bikessss[x].Number_of_bikes)
       setCrs(carssss[x].Number_of_cars)
       setAqi(aqissss[x].AQI)
-      setCotwo(cotwossss[x].C02_ppm)
+      setCotwo(cotwossss[x].CO2_ppm)
       setTemp(tempssss[x].Temperature)
    }
 

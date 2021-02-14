@@ -74,18 +74,18 @@ function Maptwo(props) {
       
             const obj1 = {
                 name : peds[x].Number_of_peds,
-                lat : peds[x].Location.lat,
-                lng : peds[x].Location.long
+                lat : peds[x].Misc.Location.lat,
+                lng : peds[x].Misc.Location.long
              };
              const obj2 = {
                 name : cars[x].Number_of_cars,
-                lat : cars[x].Location.lat,
-                lng : cars[x].Location.long
+                lat : cars[x].Misc.Location.lat,
+                lng : cars[x].Misc.Location.long
            };
              const obj3 = {
                 name : bikes[x].Number_of_bikes,
-                lat : bikes[x].Location.lat,
-                lng : bikes[x].Location.long
+                lat : bikes[x].Misc.Location.lat,
+                lng : bikes[x].Misc.Location.long
            };
              pedsdata.push(obj1);
              carsdata.push(obj2);
@@ -117,7 +117,7 @@ function Maptwo(props) {
 			container: mapContainerRef.current,
 			// See style options here: https://docs.mapbox.com/api/maps/#styles
 			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [13.6753,20.6078],
+			center: [0.756395,58.586635],
 			zoom: 6,
 		  });
 
