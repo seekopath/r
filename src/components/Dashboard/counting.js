@@ -146,6 +146,8 @@ export default function Counting(props) {
   const [pds, setPds] = React.useState(0);
   const [bks, setBks] = React.useState(0);
   const [crs, setCrs] = React.useState(0);
+  const [locations, setLocations] = React.useState(0);
+  const [times, setTimes] = React.useState(0);
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -168,6 +170,7 @@ export default function Counting(props) {
     var pedssss = {};
     var carssss = {};
     var bikessss = {};
+    var locationss = {};
 
     items.forEach((item)=>{
       if(item.key=='Pedestrians'){
@@ -184,11 +187,18 @@ export default function Counting(props) {
         carssss = item.val();
       }
     })
+    items.forEach((item)=>{
+      if(item.key=='Fall_Detection'){
+        locationss = item.val();
+      }
+    })
 
-    for (let x in pedssss, bikessss, carssss){
+    for (let x in pedssss, bikessss, carssss, locationss){
       setPds(pedssss[x].Number_of_peds)
       setBks(bikessss[x].Number_of_bikes)
       setCrs(carssss[x].Number_of_cars)
+      setLocations(locationss[x].Misc.Location.lat)
+      setTimes(locationss[x].Misc.Date_Time_UTC.Local_Time)
    }
 
   }
@@ -388,7 +398,7 @@ export default function Counting(props) {
                       <ListItemText primary="Fall Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Location 14.31" />
+                      <Typography >Location {locations}  Time {times}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -401,7 +411,7 @@ export default function Counting(props) {
                       <ListItemText primary="Lying on street Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Location 14.31" />
+                    <Typography >Location {locations}  Time {times}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -414,7 +424,7 @@ export default function Counting(props) {
                       <ListItemText primary="Pedestrian hit by bike Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Location 14.31" />
+                    <Typography >Location {locations}  Time {times}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -427,7 +437,7 @@ export default function Counting(props) {
                       <ListItemText primary="Fall Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Location 14.31" />
+                    <Typography >Location {locations}  Time {times}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
@@ -440,7 +450,7 @@ export default function Counting(props) {
                       <ListItemText primary="Pedestrian hit by car Detected" />
                     </Grid>
                     <Grid item md={12} sm={12}>
-                      <ListItemText primary="Location 14.31" />
+                    <Typography >Location {locations}  Time {times}</Typography>
                     </Grid>
                   </Grid>
                 </Grid>
