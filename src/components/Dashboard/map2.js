@@ -47,361 +47,361 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhZHJ1bCIsImEiOiJja2dsNDV3ZHQwMmZzMnBxbjR3M
 
 function Maptwo(props) {
 	const { classes } = props
-	const [geodata, setGeodata] = useState();
-	const mapContainerRef = useRef();
+	// const [geodata, setGeodata] = useState();
+	// const mapContainerRef = useRef();
 
-	const  onDataChange =(items)=> {
-        var peds ={};
-        var cars = {};
-        var bikes ={};
-        let pedsdata = [];
-        let carsdata = [];
-        let bikesdata = [];
-		// console.log(items);
-        items.forEach((item)=>{
-            if(item.key=='Pedestrians'){
-              peds = item.val();
-            }
-            if(item.key=='Bikes'){
-              bikes = item.val();
-            }
-            if(item.key=='Cars'){
-              cars = item.val();
-            }
-        });
+	// const  onDataChange =(items)=> {
+    //     var peds ={};
+    //     var cars = {};
+    //     var bikes ={};
+    //     let pedsdata = [];
+    //     let carsdata = [];
+    //     let bikesdata = [];
+	// 	// console.log(items);
+    //     items.forEach((item)=>{
+    //         if(item.key=='Pedestrians'){
+    //           peds = item.val();
+    //         }
+    //         if(item.key=='Bikes'){
+    //           bikes = item.val();
+    //         }
+    //         if(item.key=='Cars'){
+    //           cars = item.val();
+    //         }
+    //     });
         
-        for (let x in cars,peds,bikes) {
+    //     for (let x in cars,peds,bikes) {
       
-            const obj1 = {
-                name : peds[x].Number_of_peds,
-                lat : peds[x].Misc.Location.lat,
-                lng : peds[x].Misc.Location.long
-             };
-             const obj2 = {
-                name : cars[x].Number_of_cars,
-                lat : cars[x].Misc.Location.lat,
-                lng : cars[x].Misc.Location.long
-           };
-             const obj3 = {
-                name : bikes[x].Number_of_bikes,
-                lat : bikes[x].Misc.Location.lat,
-                lng : bikes[x].Misc.Location.long
-           };
-             pedsdata.push(obj1);
-             carsdata.push(obj2);
-             bikesdata.push(obj3);
-           }
+    //         const obj1 = {
+    //             name : peds[x].Number_of_peds,
+    //             lat : peds[x].Misc.Location.lat,
+    //             lng : peds[x].Misc.Location.long
+    //          };
+    //          const obj2 = {
+    //             name : cars[x].Number_of_cars,
+    //             lat : cars[x].Misc.Location.lat,
+    //             lng : cars[x].Misc.Location.long
+    //        };
+    //          const obj3 = {
+    //             name : bikes[x].Number_of_bikes,
+    //             lat : bikes[x].Misc.Location.lat,
+    //             lng : bikes[x].Misc.Location.long
+    //        };
+    //          pedsdata.push(obj1);
+    //          carsdata.push(obj2);
+    //          bikesdata.push(obj3);
+    //        }
 
 		
-        let pedsdataGeoJSON = GeoJSON.parse(pedsdata, { Point: ["lat", "lng"] });
-        let carsdataGeoJSON = GeoJSON.parse(carsdata, { Point: ["lat", "lng"] });
-        let bikesdataGeoJSON = GeoJSON.parse(bikesdata, { Point: ["lat", "lng"] });
+    //     let pedsdataGeoJSON = GeoJSON.parse(pedsdata, { Point: ["lat", "lng"] });
+    //     let carsdataGeoJSON = GeoJSON.parse(carsdata, { Point: ["lat", "lng"] });
+    //     let bikesdataGeoJSON = GeoJSON.parse(bikesdata, { Point: ["lat", "lng"] });
 		
-		// console.info(pedsdataGeoJSON);
-		// console.info(geodata);
-		setGeodata(pedsdataGeoJSON);
-		// console.log(geodata);
-		// return pedsdataGeoJSON;
-		createmap(pedsdataGeoJSON,carsdataGeoJSON,bikesdataGeoJSON);
+	// 	// console.info(pedsdataGeoJSON);
+	// 	// console.info(geodata);
+	// 	setGeodata(pedsdataGeoJSON);
+	// 	// console.log(geodata);
+	// 	// return pedsdataGeoJSON;
+	// 	createmap(pedsdataGeoJSON,carsdataGeoJSON,bikesdataGeoJSON);
 
-	  }
+	//   }
 	
-	useEffect(() => {
-		firebase.getAll().on("value", onDataChange);
+	// useEffect(() => {
+	// 	firebase.getAll().on("value", onDataChange);
 
-	},[])
+	// },[])
 
 
-	function createmap(pedsgeojsondata,carsgeojsondata,bikesgeojsondata){
-		const map = new mapboxgl.Map({
-			container: mapContainerRef.current,
-			// See style options here: https://docs.mapbox.com/api/maps/#styles
-			style: 'mapbox://styles/mapbox/streets-v11',
-			center: [0.756395,58.586635],
-			zoom: 6,
-		  });
+	// function createmap(pedsgeojsondata,carsgeojsondata,bikesgeojsondata){
+	// 	const map = new mapboxgl.Map({
+	// 		container: mapContainerRef.current,
+	// 		// See style options here: https://docs.mapbox.com/api/maps/#styles
+	// 		style: 'mapbox://styles/mapbox/streets-v11',
+	// 		center: [0.756395,58.586635],
+	// 		zoom: 4,
+	// 	  });
 
-		//   var url = 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson';
-		  map.on('load', function () {
+	// 	//   var url = 'https://docs.mapbox.com/mapbox-gl-js/assets/earthquakes.geojson';
+	// 	  map.on('load', function () {
 		
-		//    console.log(geojsondata);
-		  map.addSource('earthquakes', { type: 'geojson', data: pedsgeojsondata });
-          map.addSource('cars', { type: 'geojson', data: carsgeojsondata });
-          map.addSource('bikes', { type: 'geojson', data: bikesgeojsondata });
-		  map.addLayer(
-			{
-			'id': 'earthquakes-heat',
-			'type': 'heatmap',
-			'source': 'earthquakes',
-			'maxzoom': 9,
-			'paint': {
-			// Increase the heatmap weight based on frequency and property Number_of_pedsnitude
-			'heatmap-weight': [
-			'interpolate',
-			['linear'],
-			['get', 'name'],
-			0,
-			0,
-			6,
-			1
-			],
-			// Increase the heatmap color weight weight by zoom level
-			// heatmap-intensity is a multiplier on top of heatmap-weight
-			'heatmap-intensity': [
-			'interpolate',
-			['linear'],
-			['zoom'],
-			0,
-			1,
-			9,
-			3
-			],
-			// Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
-			// Begin color ramp at 0-stop with a 0-transparancy color
-			// to create a blur-like effect.
-			'heatmap-color': [
-			'interpolate',
-			['linear'],
-			['heatmap-density'],
-			0,
-			'rgba(33,102,172,0)',
-			0.2,
-			'rgb(103,169,207)',
-			0.4,
-			'rgb(209,229,240)',
-			0.6,
-			'rgb(253,219,199)',
-			0.8,
-			'rgb(239,138,98)',
-			1,
-			'rgb(178,24,43)'
-			],
-			// Adjust the heatmap radius by zoom level
-			'heatmap-radius': [
-			'interpolate',
-			['linear'],
-			['zoom'],
-			0,
-			2,
-			9,
-			20
-			],
-			// Transition from heatmap to circle layer by zoom level
-			'heatmap-opacity': [
-			'interpolate',
-			['linear'],
-			['zoom'],
-			7,
-			1,
-			9,
-			0
-			]
-			}
-			},
-			'waterway-label'
-			);
-            map.addLayer(
-                {
-                'id': 'cars-heat',
-                'type': 'heatmap',
-                'source': 'cars',
-                'maxzoom': 9,
-                'paint': {
-                // Increase the heatmap weight based on frequency and property Number_of_pedsnitude
-                'heatmap-weight': [
-                'interpolate',
-                ['linear'],
-                ['get', 'name'],
-                0,
-                0,
-                6,
-                1
-                ],
-                // Increase the heatmap color weight weight by zoom level
-                // heatmap-intensity is a multiplier on top of heatmap-weight
-                'heatmap-intensity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                0,
-                1,
-                9,
-                3
-                ],
-                // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
-                // Begin color ramp at 0-stop with a 0-transparancy color
-                // to create a blur-like effect.
-                'heatmap-color': [
-                'interpolate',
-                ['linear'],
-                ['heatmap-density'],
-                0,
-                'rgba(10,0,0,0)',
-                0.2,
-                'rgb(0,10,0)',
-                0.4,
-                'rgb(0,0,10)',
-                0.6,
-                'rgb(0,15,0)',
-                0.8,
-                'rgb(89,0,0)',
-                1,
-                'rgb(0,0,200)'
-                ],
-                // Adjust the heatmap radius by zoom level
-                'heatmap-radius': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                0,
-                2,
-                9,
-                20
-                ],
-                // Transition from heatmap to circle layer by zoom level
-                'heatmap-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                7,
-                1,
-                9,
-                0
-                ]
-                }
-                },
-                'waterway-label'
-                );
-            map.addLayer(
-                {
-                'id': 'bikess-heat',
-                'type': 'heatmap',
-                'source': 'bikes',
-                'maxzoom': 9,
-                'paint': {
-                // Increase the heatmap weight based on frequency and property Number_of_pedsnitude
-                'heatmap-weight': [
-                'interpolate',
-                ['linear'],
-                ['get', 'name'],
-                0,
-                0,
-                6,
-                1
-                ],
-                // Increase the heatmap color weight weight by zoom level
-                // heatmap-intensity is a multiplier on top of heatmap-weight
-                'heatmap-intensity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                0,
-                1,
-                9,
-                3
-                ],
-                // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
-                // Begin color ramp at 0-stop with a 0-transparancy color
-                // to create a blur-like effect.
-                'heatmap-color': [
-                'interpolate',
-                ['linear'],
-                ['heatmap-density'],
-                0,
-                'rgba(255,0,0,0)',
-                0.2,
-                'rgb(255,0,0)',
-                0.4,
-                'rgb(255,0,0)',
-                0.6,
-                'rgb(255,0,0)',
-                0.8,
-                'rgb(255,0,0)',
-                1,
-                'rgb(255,0,0)'
-                ],
-                // Adjust the heatmap radius by zoom level
-                'heatmap-radius': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                0,
-                2,
-                9,
-                20
-                ],
-                // Transition from heatmap to circle layer by zoom level
-                'heatmap-opacity': [
-                'interpolate',
-                ['linear'],
-                ['zoom'],
-                7,
-                1,
-                9,
-                0
-                ]
-                }
-                },
-                'waterway-label'
-                );
-			map.addLayer(
-			  {
-			  'id': 'earthquakes-point',
-			  'type': 'circle',
-			  'source': 'earthquakes',
-			  'minzoom': 7,
-			  'paint': {
-			  // Size circle radius by earthquake namenitude and zoom level
-			  'circle-radius': [
-			  'interpolate',
-			  ['linear'],
-			  ['zoom'],
-			  7,
-			  ['interpolate', ['linear'], ['get', 'name'], 1, 1, 6, 4],
-			  16,
-			  ['interpolate', ['linear'], ['get', 'name'], 1, 5, 6, 50]
-			  ],
-			  // Color circle by earthquake namenitude
-			  'circle-color': [
-			  'interpolate',
-			  ['linear'],
-			  ['get', 'name'],
-			  1,
-			  'rgba(33,102,172,0)',
-			  2,
-			  'rgb(103,169,207)',
-			  3,
-			  'rgb(209,229,240)',
-			  4,
-			  'rgb(253,219,199)',
-			  5,
-			  'rgb(239,138,98)',
-			  6,
-			  'rgb(178,24,43)'
-			  ],
-			  'circle-stroke-color': 'white',
-			  'circle-stroke-width': 1,
-			  // Transition from heatmap to circle layer by zoom level
-			  'circle-opacity': [
-			  'interpolate',
-			  ['linear'],
-			  ['zoom'],
-			  7,
-			  0,
-			  8,
-			  1
-			  ]
-			  }
-			  },
-			  'waterway-label'
-			  );
-		  });
-			  // add navigation control (the +/- zoom buttons)
-			//   map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
+	// 	//    console.log(geojsondata);
+	// 	  map.addSource('earthquakes', { type: 'geojson', data: pedsgeojsondata });
+    //       map.addSource('cars', { type: 'geojson', data: carsgeojsondata });
+    //       map.addSource('bikes', { type: 'geojson', data: bikesgeojsondata });
+	// 	  map.addLayer(
+	// 		{
+	// 		'id': 'earthquakes-heat',
+	// 		'type': 'heatmap',
+	// 		'source': 'earthquakes',
+	// 		'maxzoom': 9,
+	// 		'paint': {
+	// 		// Increase the heatmap weight based on frequency and property Number_of_pedsnitude
+	// 		'heatmap-weight': [
+	// 		'interpolate',
+	// 		['linear'],
+	// 		['get', 'name'],
+	// 		0,
+	// 		0,
+	// 		6,
+	// 		1
+	// 		],
+	// 		// Increase the heatmap color weight weight by zoom level
+	// 		// heatmap-intensity is a multiplier on top of heatmap-weight
+	// 		'heatmap-intensity': [
+	// 		'interpolate',
+	// 		['linear'],
+	// 		['zoom'],
+	// 		0,
+	// 		1,
+	// 		9,
+	// 		3
+	// 		],
+	// 		// Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+	// 		// Begin color ramp at 0-stop with a 0-transparancy color
+	// 		// to create a blur-like effect.
+	// 		'heatmap-color': [
+	// 		'interpolate',
+	// 		['linear'],
+	// 		['heatmap-density'],
+	// 		0,
+	// 		'rgba(33,102,172,0)',
+	// 		0.2,
+	// 		'rgb(103,169,207)',
+	// 		0.4,
+	// 		'rgb(209,229,240)',
+	// 		0.6,
+	// 		'rgb(253,219,199)',
+	// 		0.8,
+	// 		'rgb(239,138,98)',
+	// 		1,
+	// 		'rgb(178,24,43)'
+	// 		],
+	// 		// Adjust the heatmap radius by zoom level
+	// 		'heatmap-radius': [
+	// 		'interpolate',
+	// 		['linear'],
+	// 		['zoom'],
+	// 		0,
+	// 		2,
+	// 		9,
+	// 		20
+	// 		],
+	// 		// Transition from heatmap to circle layer by zoom level
+	// 		'heatmap-opacity': [
+	// 		'interpolate',
+	// 		['linear'],
+	// 		['zoom'],
+	// 		7,
+	// 		1,
+	// 		9,
+	// 		0
+	// 		]
+	// 		}
+	// 		},
+	// 		'waterway-label'
+	// 		);
+    //         map.addLayer(
+    //             {
+    //             'id': 'cars-heat',
+    //             'type': 'heatmap',
+    //             'source': 'cars',
+    //             'maxzoom': 9,
+    //             'paint': {
+    //             // Increase the heatmap weight based on frequency and property Number_of_pedsnitude
+    //             'heatmap-weight': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['get', 'name'],
+    //             0,
+    //             0,
+    //             6,
+    //             1
+    //             ],
+    //             // Increase the heatmap color weight weight by zoom level
+    //             // heatmap-intensity is a multiplier on top of heatmap-weight
+    //             'heatmap-intensity': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['zoom'],
+    //             0,
+    //             1,
+    //             9,
+    //             3
+    //             ],
+    //             // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+    //             // Begin color ramp at 0-stop with a 0-transparancy color
+    //             // to create a blur-like effect.
+    //             'heatmap-color': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['heatmap-density'],
+    //             0,
+    //             'rgba(10,0,0,0)',
+    //             0.2,
+    //             'rgb(0,10,0)',
+    //             0.4,
+    //             'rgb(0,0,10)',
+    //             0.6,
+    //             'rgb(0,15,0)',
+    //             0.8,
+    //             'rgb(89,0,0)',
+    //             1,
+    //             'rgb(0,0,200)'
+    //             ],
+    //             // Adjust the heatmap radius by zoom level
+    //             'heatmap-radius': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['zoom'],
+    //             0,
+    //             2,
+    //             9,
+    //             20
+    //             ],
+    //             // Transition from heatmap to circle layer by zoom level
+    //             'heatmap-opacity': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['zoom'],
+    //             7,
+    //             1,
+    //             9,
+    //             0
+    //             ]
+    //             }
+    //             },
+    //             'waterway-label'
+    //             );
+    //         map.addLayer(
+    //             {
+    //             'id': 'bikess-heat',
+    //             'type': 'heatmap',
+    //             'source': 'bikes',
+    //             'maxzoom': 9,
+    //             'paint': {
+    //             // Increase the heatmap weight based on frequency and property Number_of_pedsnitude
+    //             'heatmap-weight': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['get', 'name'],
+    //             0,
+    //             0,
+    //             6,
+    //             1
+    //             ],
+    //             // Increase the heatmap color weight weight by zoom level
+    //             // heatmap-intensity is a multiplier on top of heatmap-weight
+    //             'heatmap-intensity': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['zoom'],
+    //             0,
+    //             1,
+    //             9,
+    //             3
+    //             ],
+    //             // Color ramp for heatmap.  Domain is 0 (low) to 1 (high).
+    //             // Begin color ramp at 0-stop with a 0-transparancy color
+    //             // to create a blur-like effect.
+    //             'heatmap-color': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['heatmap-density'],
+    //             0,
+    //             'rgba(255,0,0,0)',
+    //             0.2,
+    //             'rgb(255,0,0)',
+    //             0.4,
+    //             'rgb(255,0,0)',
+    //             0.6,
+    //             'rgb(255,0,0)',
+    //             0.8,
+    //             'rgb(255,0,0)',
+    //             1,
+    //             'rgb(255,0,0)'
+    //             ],
+    //             // Adjust the heatmap radius by zoom level
+    //             'heatmap-radius': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['zoom'],
+    //             0,
+    //             2,
+    //             9,
+    //             20
+    //             ],
+    //             // Transition from heatmap to circle layer by zoom level
+    //             'heatmap-opacity': [
+    //             'interpolate',
+    //             ['linear'],
+    //             ['zoom'],
+    //             7,
+    //             1,
+    //             9,
+    //             0
+    //             ]
+    //             }
+    //             },
+    //             'waterway-label'
+    //             );
+	// 		map.addLayer(
+	// 		  {
+	// 		  'id': 'earthquakes-point',
+	// 		  'type': 'circle',
+	// 		  'source': 'earthquakes',
+	// 		  'minzoom': 7,
+	// 		  'paint': {
+	// 		  // Size circle radius by earthquake namenitude and zoom level
+	// 		  'circle-radius': [
+	// 		  'interpolate',
+	// 		  ['linear'],
+	// 		  ['zoom'],
+	// 		  7,
+	// 		  ['interpolate', ['linear'], ['get', 'name'], 1, 1, 6, 4],
+	// 		  16,
+	// 		  ['interpolate', ['linear'], ['get', 'name'], 1, 5, 6, 50]
+	// 		  ],
+	// 		  // Color circle by earthquake namenitude
+	// 		  'circle-color': [
+	// 		  'interpolate',
+	// 		  ['linear'],
+	// 		  ['get', 'name'],
+	// 		  1,
+	// 		  'rgba(33,102,172,0)',
+	// 		  2,
+	// 		  'rgb(103,169,207)',
+	// 		  3,
+	// 		  'rgb(209,229,240)',
+	// 		  4,
+	// 		  'rgb(253,219,199)',
+	// 		  5,
+	// 		  'rgb(239,138,98)',
+	// 		  6,
+	// 		  'rgb(178,24,43)'
+	// 		  ],
+	// 		  'circle-stroke-color': 'white',
+	// 		  'circle-stroke-width': 1,
+	// 		  // Transition from heatmap to circle layer by zoom level
+	// 		  'circle-opacity': [
+	// 		  'interpolate',
+	// 		  ['linear'],
+	// 		  ['zoom'],
+	// 		  7,
+	// 		  0,
+	// 		  8,
+	// 		  1
+	// 		  ]
+	// 		  }
+	// 		  },
+	// 		  'waterway-label'
+	// 		  );
+	// 	  });
+	// 		  // add navigation control (the +/- zoom buttons)
+	// 		//   map.addControl(new mapboxgl.NavigationControl(), 'bottom-right');
 		  
-			  // clean up on unmount
-			  return () => map.remove();
-	}
+	// 		  // clean up on unmount
+	// 		  return () => map.remove();
+	// }
 
 	if(!firebase.getCurrentUsername()) {
 		// not logged in
@@ -416,8 +416,8 @@ function Maptwo(props) {
     return (
 		// <main >
 
-			  <div className={classes.map_container} ref={mapContainerRef} style={{minWidth: "139px"}}/>
-             
+			//   <div className={classes.map_container} ref={mapContainerRef} style={{minWidth: "139px"}}/>
+			<iframe className={classes.map_container} src="https://seekopath.github.io" style={{minWidth: "139px"}}/>
 			
 	)
 
