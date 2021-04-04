@@ -39,6 +39,7 @@ function Barchart(props) {
     });
 
     const data = [];
+    var datas = [];
     for (let x in level) {
       
      const obj = {
@@ -48,7 +49,8 @@ function Barchart(props) {
       };
       data.push(obj);
     }
-    setData(data);
+    datas = data.splice(-10);
+    setData(datas);
     console.log(data); 
 
     }
