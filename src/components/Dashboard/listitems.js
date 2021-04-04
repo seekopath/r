@@ -17,6 +17,7 @@ import SettingsIcon from '@material-ui/icons/Settings';
 import LockOpenIcon from '@material-ui/icons/LockOpen';
 import LockIcon from '@material-ui/icons/Lock';
 import {Link} from 'react-router-dom';
+import VideoLabelIcon from '@material-ui/icons/VideoLabel';
 
 
 export const mainListItems = (
@@ -58,6 +59,14 @@ export const mainListItems = (
         <PublicIcon />
       </ListItemIcon>
       <ListItemText primary="Connectivity" />
+    </ListItem>
+    </Link>
+    <Link to="/video" style={{textDecoration: "none",color:"inherit"}}>
+    <ListItem button>
+      <ListItemIcon>
+        <VideoLabelIcon />
+      </ListItemIcon>
+      <ListItemText primary="Video" />
     </ListItem>
     </Link>
     <ListItem button>

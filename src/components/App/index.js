@@ -7,6 +7,7 @@ import Register from '../Register'
 import Dashboard from '../Dashboard'
 import Settings from '../Settings'
 import Chart from '../Dashboard/Chart'
+import Video from '../Dashboard/video'
 import Clipped from '../Dashboard/test'
 import Counting from '../Dashboard/counting'
 import Mapone from '../Dashboard/map1'
@@ -42,6 +43,7 @@ export default function App() {
 					<Route exact path="/register" component={Register} />
 					<Route exact path="/dashboard" component={Dashboard} />
 					<Route exact path="/counting" component={Counting} />
+					<Route exact path="/video" component={Video} />
 					<Route exact path="/environment" component={Environment} />
 					<Route exact path="/connectivity" component={Connectivity} />
 					<Route exact path="/chart" component={Chart} />

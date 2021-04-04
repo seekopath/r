@@ -382,32 +382,32 @@ mapboxgl.accessToken = 'pk.eyJ1Ijoic2hhZHJ1bCIsImEiOiJja2dsNDV3ZHQwMmZzMnBxbjR3M
 
 function Mapthree(props) {
 	const { classes } = props
-// 	const [geodata, setGeodata] = useState();
-// 	const mapContainerRef = useRef(null);
+	// const [geodata, setGeodata] = useState();
+	// const mapContainerRef = useRef(null);
 
-// 	// const  onDataChange =(items)=> {
-// 	// 	let tutorials = [];
-// 	// 	console.log(items);
+	// const  onDataChange =(items)=> {
+	// 	let tutorials = [];
+	// 	console.log(items);
 		
-// 	// 	items.forEach((item) => {
+	// 	items.forEach((item) => {
 			
-// 	// 	  let key = item.key;
-// 	// 	//   console.log(key);
-// 	// 	  let data = item.val();
-// 	// 	  console.log(data);
-// 	// 	//   tutorials.push({
-// 	// 	// 	  type : 'feature',
-// 	// 	// 	  geometry : {
-// 	// 	// 		type: "Point",
-// 	// 	// 		// [d["lon"], d["lat"]]
-// 	// 	// 		coordinates: [data.Location.lat, data.Location.long],
-// 	// 	// 		},
-// 	// 	// 	  properties :  JSON.stringify(data),
-// 	// 	// 	// key: key,
-// 	// 	// 	// title: data.title,
-// 	// 	// 	// description: data.description,
-// 	// 	// 	// published: data.published,
-// 	// 	//   });
+	// 	  let key = item.key;
+	// 	//   console.log(key);
+	// 	  let data = item.val();
+	// 	  console.log(data);
+	// 	//   tutorials.push({
+	// 	// 	  type : 'feature',
+	// 	// 	  geometry : {
+	// 	// 		type: "Point",
+	// 	// 		// [d["lon"], d["lat"]]
+	// 	// 		coordinates: [data.Location.lat, data.Location.long],
+	// 	// 		},
+	// 	// 	  properties :  JSON.stringify(data),
+	// 	// 	// key: key,
+	// 	// 	// title: data.title,
+	// 	// 	// description: data.description,
+	// 	// 	// published: data.published,
+	// 	//   });
 // 	// 	tutorials.push({
 // 	// 		name : data.Number_of_peds,
 // 	// 		lat : data.Location.lat,
@@ -460,7 +460,7 @@ function Mapthree(props) {
 //         tutorials.push({
 //             name : data.Number_of_peds,
 //             lat : data.Misc.Location.lat,
-//             lng : data.Misc.Location.long
+//             lng : data.Misc.Location.longi
 //         })
 //         });
 //         let dataGeoJSON = GeoJSON.parse(tutorials, { Point: ["lat", "lng"] });

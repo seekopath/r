@@ -1,82 +1,3 @@
-// import React from 'react'
-// import { Typography, Paper, Avatar, Button } from '@material-ui/core'
-// import VerifiedUserOutlined from '@material-ui/icons/VerifiedUserOutlined'
-// import withStyles from '@material-ui/core/styles/withStyles'
-// import firebase from '../firebase'
-// import { withRouter } from 'react-router-dom'
-
-// const styles = theme => ({
-// 	main: {
-// 		width: 'auto',
-// 		display: 'block', // Fix IE 11 issue.
-// 		marginLeft: theme.spacing.unit * 3,
-// 		marginRight: theme.spacing.unit * 3,
-// 		[theme.breakpoints.up(400 + theme.spacing.unit * 3 * 2)]: {
-// 			width: 400,
-// 			marginLeft: 'auto',
-// 			marginRight: 'auto',
-// 		},
-// 	},
-// 	paper: {
-// 		marginTop: theme.spacing.unit * 8,
-// 		display: 'flex',
-// 		flexDirection: 'column',
-// 		alignItems: 'center',
-// 		padding: `${theme.spacing.unit * 2}px ${theme.spacing.unit * 3}px ${theme.spacing.unit * 3}px`,
-// 	},
-// 	avatar: {
-// 		margin: theme.spacing.unit,
-// 		backgroundColor: theme.palette.secondary.main,
-// 	},
-// 	submit: {
-// 		marginTop: theme.spacing.unit * 3,
-// 	},
-// })
-
-// function Dashboard(props) {
-// 	const { classes } = props
-
-// 	if(!firebase.getCurrentUsername()) {
-// 		// not logged in
-// 		alert('Please login first')
-// 		props.history.replace('/login')
-// 		return null
-//     }
-
-
-    
-//     return (
-// 		<main className={classes.main}>
-// 			<Paper className={classes.paper}>
-// 				<Avatar className={classes.avatar}>
-// 					<VerifiedUserOutlined />
-// 				</Avatar>
-// 				<Typography component="h1" variant="h5">
-// 					Hello { firebase.getCurrentUsername() }
-// 				</Typography>
-// 				<Button
-// 					type="submit"
-// 					fullWidth
-// 					variant="contained"
-// 					color="secondary"
-// 					onClick={logout}
-// 					className={classes.submit}>
-// 					Logout
-//           		</Button>
-// 			</Paper>
-// 		</main>
-// 	)
-
-// 	async function logout() {
-// 		await firebase.logout()
-// 		props.history.push('/')
-// 	}
-// }
-
-// export default withRouter(withStyles(styles)(Dashboard))
-
-
-
 import React,{useEffect} from 'react';
 import clsx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
@@ -96,11 +17,11 @@ import Paper from '@material-ui/core/Paper';
 import Link from '@material-ui/core/Link';
 import MenuIcon from '@material-ui/icons/Menu';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
-import NotificationsIcon from '@material-ui/icons/Notifications';
 import { mainListItems, secondaryListItems } from './listitems';
 import Chart from './Chart';
 import Deposits from './Deposits';
 import Orders from './Orders';
+import NotificationsIcon from '@material-ui/icons/Notifications';
 import QuestionAnswerIcon from '@material-ui/icons/QuestionAnswer';
 import ExitToAppIcon from '@material-ui/icons/ExitToApp';
 import LanguageIcon from '@material-ui/icons/Language';
@@ -215,6 +136,20 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
+var mqtt    = require('mqtt');
+var options = {
+    protocol: 'ws',
+    // clientId uniquely identifies client
+    // choose any string you wish
+    clientId: 'b0908853',
+    username: 'allas_sub',
+    password: 'allas',
+    port: '8083'    
+};
+var client  = mqtt.connect('mqtt://q0b02b46.en.emqx.cloud/mqtt', options);
+
+client.subscribe('/python-mqtt/peds');
+
 export default function Dashboard(props) {
   const classes = useStyles();
   const [open, setOpen] = React.useState(true);
@@ -230,6 +165,7 @@ export default function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+  var note;
   async function logout() {
 		try {
       await firebase.logout()
@@ -291,6 +227,20 @@ export default function Dashboard(props) {
 
 
   useEffect(()  => {
+    client.on('message', function (topic, message) {
+      note = message.toString();
+      // Updates React state with message 
+      console.log("hello");
+      console.log(note);
+      client.end();
+      });
+      client.on('connect', function () {
+        client.subscribe('/python-mqtt/peds', function (err) {
+          if (!err) {
+            client.publish('/python-mqtt/peds', 'Hello mqtt')
+          }
+        })
+      });
     firebase.getAll().on("value", onDataChange);
   });
 
