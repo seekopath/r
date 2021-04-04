@@ -136,19 +136,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-var mqtt    = require('mqtt');
-var options = {
-    protocol: 'ws',
-    // clientId uniquely identifies client
-    // choose any string you wish
-    clientId: 'b0908853',
-    username: 'allas_sub',
-    password: 'allas',
-    port: '8083'    
-};
-var client  = mqtt.connect('mqtt://q0b02b46.en.emqx.cloud/mqtt', options);
 
-client.subscribe('/python-mqtt/peds');
 
 export default function Dashboard(props) {
   const classes = useStyles();
@@ -227,20 +215,7 @@ export default function Dashboard(props) {
 
 
   useEffect(()  => {
-    client.on('message', function (topic, message) {
-      note = message.toString();
-      // Updates React state with message 
-      console.log("hello");
-      console.log(note);
-      client.end();
-      });
-      client.on('connect', function () {
-        client.subscribe('/python-mqtt/peds', function (err) {
-          if (!err) {
-            client.publish('/python-mqtt/peds', 'Hello mqtt')
-          }
-        })
-      });
+   
     firebase.getAll().on("value", onDataChange);
   });
 
