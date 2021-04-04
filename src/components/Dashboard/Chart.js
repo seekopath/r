@@ -16,6 +16,7 @@ import {
   AreaChart,
   Bar
 } from "recharts";
+import { FormControl, InputLabel, MenuItem, Select } from "@material-ui/core";
 
 
 const styles = theme => ({
@@ -70,6 +71,12 @@ function Chart(props) {
     function convertToDate(date){
       return (moment(date, "DD/MM/YYYY").toDate());
     }
+
+    const [age, setAge] = React.useState('');
+
+    const handleChange = (event) => {
+      setAge(event.target.value);
+    };
   
 	
 	useEffect(() => {
@@ -80,7 +87,22 @@ function Chart(props) {
       <div className="App" >
         <header>
         </header>
+        <div style={{display:"flex",flexDirection: "row"}}>
         <h2 style={{ textAlign: "left" }}>Statistics</h2>
+        <FormControl className={classes.formControl} style={{marginLeft: "30%", width: "17%"}}>
+        <InputLabel id="demo-simple-select-label">Select days</InputLabel>
+        <Select
+          labelId="demo-simple-select-label"
+          id="demo-simple-select"
+          value={age}
+          onChange={handleChange}
+        >
+          <MenuItem value={10}>Last 10 days</MenuItem>
+          <MenuItem value={20}>Last 20 days</MenuItem>
+          <MenuItem value={30}>Last 30 days</MenuItem>
+        </Select>
+      </FormControl>
+      </div>
 
   
         {/* <LineChart

@@ -78,16 +78,16 @@ function Barchart(props) {
         <div style={{display:"flex",flexDirection: "row"}}>
         <h2 style={{ textAlign: "left" }}>PM 2.5</h2>
         <FormControl className={classes.formControl} style={{marginLeft: "30%", width: "17%"}}>
-        <InputLabel id="demo-simple-select-label">Last 10 days</InputLabel>
+        <InputLabel id="demo-simple-select-label">Select days</InputLabel>
         <Select
           labelId="demo-simple-select-label"
           id="demo-simple-select"
           value={age}
           onChange={handleChange}
         >
-          <MenuItem value={10}>Last 20 days</MenuItem>
-          <MenuItem value={20}>Last 30 days</MenuItem>
-          <MenuItem value={30}>Last 40 days</MenuItem>
+          <MenuItem value={10}>Last 10 days</MenuItem>
+          <MenuItem value={20}>Last 20 days</MenuItem>
+          <MenuItem value={30}>Last 30 days</MenuItem>
         </Select>
       </FormControl>
       </div>
