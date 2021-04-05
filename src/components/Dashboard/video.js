@@ -376,12 +376,13 @@ export default function Video(props) {
                 </Grid>
                 <Grid item xs md={12}>
                   {/* <Maptwo /> */}
-                  <iframe width="100%" height="700" src="https://www.youtube.com/embed/wqctLW0Hb_0?controls=0&autoplay=1"   allowfullscreen></iframe>
+                  <iframe width="100%" height="600" src="https://www.youtube.com/embed/wqctLW0Hb_0?controls=0&autoplay=1"   allowfullscreen></iframe>
                 </Grid>
               </Grid>
               
               <Grid container md={3} style={{marginLeft:"1%",boxShadow: "0px 0px 25px -10px rgba(0,0,0,0.75)",height:"fit-content",}} >
                 <Grid item md={12} sm={12}>
+                  <p>Hello</p>
                   <ListItem button>
                     <ListItemIcon>
                       <ReportProblemOutlinedIcon />

@@ -81,7 +81,6 @@ const styles = theme => ({
 		height: '25px',
 		objectFit: 'contain',
 		opacity: '0.5',
-		fontFamily:' Avenir',
 		fontSize: '18px',
 		fontWeight: 'normal',
 		fontStretch: 'normal',
@@ -120,9 +119,9 @@ function SignIn(props) {
 				// 		assets/logo2.png 3x"
 
 				className={classes.allas_logo_Rityta} ></img>
-			<Typography className={classes.desc} >
+			<Typography className={classes.desc} style={{fontFamily: "Avenir"}} >
 			Welcome back! 
-			<Typography className = {classes.next}>Please login to your account.</Typography>
+			<Typography className = {classes.next} style={{fontFamily: "Avenir"}}>Please login to your account.</Typography>
 			</Typography>
 			<form className={classes.form} onSubmit={e => e.preventDefault() && false } style={{padding:"3%"}}>
 			  <TextField
