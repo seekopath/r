@@ -137,9 +137,11 @@ const useStyles = makeStyles((theme) => ({
     height: 240,
   },
   modal: {
+    marginLeft: '80%',
+    marginBlockEnd: 'auto',
     display: 'flex',
     alignItems: 'center',
-    justifyContent: 'left',
+    justifyContent: 'center',
   },
   modalpaper: {
     backgroundColor: theme.palette.background.paper,
