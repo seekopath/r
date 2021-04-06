@@ -41,6 +41,8 @@ import DriveEtaIcon from '@material-ui/icons/DriveEta';
 import Button from '@material-ui/core/Button';
 import Barchart from './barchart';
 import './index.css';
+import DeleteIcon from "@material-ui/icons/Delete";
+import { Backdrop, Fade, Modal } from '@material-ui/core';
 
 function Copyright() {
   return (
@@ -134,6 +136,17 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'left',
+  },
+  modalpaper: {
+    backgroundColor: theme.palette.background.paper,
+    border: "2px solid #000",
+    boxShadow: theme.shadows[5],
+    padding: theme.spacing(2, 4, 3)
+  },
 }));
 
 
@@ -153,6 +166,17 @@ export default function Dashboard(props) {
   const handleDrawerClose = () => {
     setOpen(false);
   };
+
+  const [openm, setOpenm] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpenm(true);
+  };
+
+  const handleClose = () => {
+    setOpenm(false);
+  };
+  
   var note;
   async function logout() {
 		try {
@@ -221,6 +245,43 @@ export default function Dashboard(props) {
 
 
   const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+
+  const modal = (
+    <Modal
+    aria-labelledby="transition-modal-title"
+    aria-describedby="transition-modal-description"
+    className={classes.modal}
+    open={openm}
+    onClose={handleClose}
+    closeAfterTransition
+    BackdropComponent={Backdrop}
+    BackdropProps={{
+      timeout: 500,
+    }}
+  >
+    <Fade in={openm}>
+      <div className={classes.modalpaper}>
+      <h2 id="transition-modal-title">Alert Last 24hr</h2>
+            <Divider />
+            <Grid container md={12} sm={12}>
+              <Grid item md={2} sm={2}>
+                <IconButton aria-label="delete">
+                  <DeleteIcon />
+                </IconButton>
+              </Grid>
+              <Grid item md={10} sm={10}>
+                <Grid item md={12} sm={12}>
+                  Fall Detected
+                </Grid>
+                <Grid item md={12} sm={12}>
+                  Location 14.31
+                </Grid>
+              </Grid>
+            </Grid>
+      </div>
+    </Fade>
+  </Modal>
+  );
 
   return (
     <div className={classes.root}>
@@ -386,8 +447,8 @@ export default function Dashboard(props) {
               </Grid>
               <Grid container md={1}>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
-                  <IconButton color="inherit">
-                    <Badge badgeContent={4} color="secondary">
+                  <IconButton color="inherit" onClick={() => handleOpen()}>
+                    <Badge badgeContent={5} color="secondary">
                       <img
                     src="assets/walk.png"
                     width="49px"
@@ -397,7 +458,7 @@ export default function Dashboard(props) {
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
-                  <IconButton color="inherit">
+                  <IconButton color="inherit" onClick={() => handleOpen()}>
                     <Badge badgeContent={4} color="secondary">
                       <img
                     src="assets/cycle.png"
@@ -408,7 +469,7 @@ export default function Dashboard(props) {
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
-                  <IconButton color="inherit">
+                  <IconButton color="inherit" onClick={() => handleOpen()}>
                     <Badge badgeContent={4} color="secondary">
                       <img
                     src="assets/cars.png"
@@ -527,7 +588,7 @@ export default function Dashboard(props) {
               </Grid>
               <Grid container md={1}>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
-                  <IconButton color="inherit">
+                  <IconButton color="inherit" onClick={() => handleOpen()}>
                     <Badge badgeContent={4} color="secondary">
                       <img
                     src="assets/pm.png"
@@ -538,7 +599,7 @@ export default function Dashboard(props) {
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
-                  <IconButton color="inherit">
+                  <IconButton color="inherit" onClick={() => handleOpen()}>
                     <Badge badgeContent={4} color="secondary">
                       <img
                     src="assets/cotwo.png"
@@ -549,7 +610,7 @@ export default function Dashboard(props) {
                   </IconButton>
                 </Grid>
                 <Grid item md={12} sm={12} style={{display:"flex",flexDirection:"row-reverse"}}>
-                  <IconButton color="inherit">
+                  <IconButton color="inherit" onClick={() => handleOpen()}>
                     <Badge badgeContent={4} color="secondary">
                       <img
                     src="assets/temp.png"
@@ -598,6 +659,7 @@ export default function Dashboard(props) {
           </Box>
         </Container>
       </main>
+      {modal}
     </div>
   );
 }

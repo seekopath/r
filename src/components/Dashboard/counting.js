@@ -42,9 +42,11 @@ import VerifiedUserIcon from "@material-ui/icons/VerifiedUser";
 import SettingsIcon from "@material-ui/icons/Settings";
 import LockOpenIcon from "@material-ui/icons/LockOpen";
 import LockIcon from "@material-ui/icons/Lock";
+import DeleteIcon from "@material-ui/icons/Delete";
 import BarChartIcon from "@material-ui/icons/BarChart";
 import ReportProblemOutlinedIcon from "@material-ui/icons/ReportProblemOutlined";
 import "./index.css";
+import { Backdrop, Fade, Modal } from "@material-ui/core";
 
 function Copyright() {
   return (
@@ -138,6 +140,11 @@ const useStyles = makeStyles((theme) => ({
   fixedHeight: {
     height: 240,
   },
+  modal: {
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
 }));
 
 export default function Counting(props) {
@@ -148,6 +155,15 @@ export default function Counting(props) {
   const [crs, setCrs] = React.useState(0);
   const [locations, setLocations] = React.useState(0);
   const [times, setTimes] = React.useState(0);
+  const [openm, setOpenm] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpenm(true);
+  };
+
+  const handleClose = () => {
+    setOpenm(false);
+  };
   const handleDrawerOpen = () => {
     setOpen(true);
   };
@@ -207,6 +223,43 @@ export default function Counting(props) {
   React.useEffect(()  => {
     firebase.getAll().on("value", onDataChange);
   });
+
+  const modal = (
+    <Modal
+    aria-labelledby="transition-modal-title"
+    aria-describedby="transition-modal-description"
+    className={classes.modal}
+    open={openm}
+    onClose={handleClose}
+    closeAfterTransition
+    BackdropComponent={Backdrop}
+    BackdropProps={{
+      timeout: 500,
+    }}
+  >
+    <Fade in={openm}>
+      <div className={classes.paper}>
+      <h2 id="transition-modal-title">Alert Last 24hr</h2>
+            <Divider />
+            <Grid container md={12} sm={12}>
+              <Grid item md={2} sm={2}>
+                <IconButton aria-label="delete">
+                  <DeleteIcon />
+                </IconButton>
+              </Grid>
+              <Grid item md={10} sm={10}>
+                <Grid item md={12} sm={12}>
+                  Fall Detected
+                </Grid>
+                <Grid item md={12} sm={12}>
+                  Location 14.31
+                </Grid>
+              </Grid>
+            </Grid>
+      </div>
+    </Fade>
+  </Modal>
+  );
 
 
   return (
@@ -466,6 +519,7 @@ export default function Counting(props) {
             <Copyright />
           </Box>
         </Container>
+        {modal}
       </main>
     </div>
   );
